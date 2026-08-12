@@ -80,6 +80,22 @@
   .all-clear { display: flex; align-items: center; gap: 5px; padding: 5px 0; font-size: 12.5px; color: #4ade80; }
   .footer { margin-top: 16px; font-size: 11px; color: #5b6072; text-align: right; }
   .footer .push-time { margin-top: 3px; }
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid #262a35;
+    background: #171a23;
+    color: #e5e7eb;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .nav-btn:hover { background: #1f232e; border-color: #3a3f4d; }
 </style>
 </head>
 <body>
@@ -92,6 +108,7 @@
     <div class="stats">
       <div class="stat alert"><div class="n" id="hdr-alerts"></div><div class="l">in alert</div></div>
       <div class="stat"><div class="n" id="hdr-machines"></div><div class="l">machines</div></div>
+      <a class="nav-btn" href="https://vendeaseltd.github.io/SLADashboard/VendEase_offline.html">&#128246; Offline machines</a>
     </div>
   </div>
   <div class="grid" id="grid"></div>

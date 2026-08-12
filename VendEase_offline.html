@@ -1,1 +1,184 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VendEase Offline Machines Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: #0f1117;
+    color: #e5e7eb;
+    padding: 24px;
+  }
+  .page { max-width: 1400px; margin: 0 auto; }
+  .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #262a35;
+  }
+  .header .title { font-size: 22px; font-weight: 700; }
+  .header .subtitle { font-size: 13px; color: #8b91a3; margin-top: 3px; }
+  .header .stats { display: flex; gap: 22px; }
+  .header .stat { text-align: right; }
+  .header .stat .n { font-size: 26px; font-weight: 700; line-height: 1; }
+  .header .stat .l { font-size: 11px; color: #8b91a3; margin-top: 2px; }
+  .stat.alert .n { color: #f0595a; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: #171a23;
+    border: 1px solid #262a35;
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .card.has-offline { border-left: 3px solid #f0595a; }
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .card-head .name { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+  .badge.bad { background: #3a1c1e; color: #f0595a; }
+  .badge.ok { background: #163524; color: #4ade80; }
+  .col-head {
+    display: grid;
+    grid-template-columns: 1fr 46px;
+    gap: 6px;
+    padding: 0 0 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #5b6072;
+  }
+  .col-head span:not(:first-child) { text-align: right; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 46px;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    font-size: 12.5px;
+    border-top: 1px solid #21242e;
+  }
+  .row:first-of-type { border-top: none; }
+  .loc { white-space: normal; word-break: normal; line-height: 1.3; padding-right: 4px; display: block; }
+  .serial { display: block; font-size: 10px; color: #5b6072; margin-top: 1px; font-family: monospace; }
+  .pill { text-align: right; font-size: 10.5px; font-weight: 600; padding: 2px 6px; border-radius: 4px; white-space: nowrap; justify-self: end; }
+  .pill.danger { background: #3a1c1e; color: #f0595a; }
+  .pill.warning { background: #3a2e14; color: #eab308; }
+  .all-clear { display: flex; align-items: center; gap: 5px; padding: 5px 0; font-size: 12.5px; color: #4ade80; }
+  .footer { margin-top: 16px; font-size: 11px; color: #5b6072; text-align: right; }
+  .footer .note { margin-top: 3px; }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8b91a3;
+    background: #171a23;
+    border: 1px solid #262a35;
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-decoration: none;
+  }
+  .nav-link:hover { color: #e5e7eb; border-color: #3a3f4d; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="title">VendEase offline machines dashboard</div>
+      <div class="subtitle" id="hdr-date"></div>
+    </div>
+    <div class="stats">
+      <div class="stat alert"><div class="n" id="hdr-offline"></div><div class="l">offline</div></div>
+      <div class="stat"><div class="n" id="hdr-machines"></div><div class="l">machines</div></div>
+      <a class="nav-link" href="https://vendeaseltd.github.io/SLADashboard/SLA_Dashboard.html">SLA breaches →</a>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="footer">
+    <div id="footer"></div>
+    <div class="note" id="footer-note"></div>
+  </div>
+</div>
+
+<script>
+const DATA = {"date": "2026-08-12", "run_timestamp": "2026-08-12 10:58 BST", "partners": {"Abercromby Vending": {"total": 79, "offline": [{"serial": "SVM0000284", "partner": "Abercromby Vending", "location": "Premier Inn Dundee Centre", "days_offline": 2}, {"serial": "SVM0000266", "partner": "Abercromby Vending", "location": "Premier Inn Inverness East", "days_offline": 2}, {"serial": "SVM0000249", "partner": "Abercromby Vending", "location": "Premier Inn Dumfries", "days_offline": 2}, {"serial": "SVM0000267", "partner": "Abercromby Vending", "location": "Premier Inn Inverness West", "days_offline": 2}, {"serial": "SVM0000290", "partner": "Abercromby Vending", "location": "Premier Inn Aviemore", "days_offline": 2}, {"serial": "SVM0000307", "partner": "Abercromby Vending", "location": "Premier Inn Bellshill", "days_offline": 2}, {"serial": "SVM0000296", "partner": "Abercromby Vending", "location": "Premier Inn Milngavie", "days_offline": 2}, {"serial": "SVM0000295", "partner": "Abercromby Vending", "location": "Premier Inn Bearsden", "days_offline": 2}, {"serial": "SVM0000312", "partner": "Abercromby Vending", "location": "Premier Inn Motherwell", "days_offline": 2}, {"serial": "SVM0000305", "partner": "Abercromby Vending", "location": "Premier Inn Kilmarnock", "days_offline": 2}, {"serial": "SVM0000294", "partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "days_offline": 2}, {"serial": "IVM0006466", "partner": "Abercromby Vending", "location": "Premier Inn St Enoch Square", "days_offline": 2}, {"serial": "IVM0006159", "partner": "Abercromby Vending", "location": "Premier Inn St Enoch Square", "days_offline": 2}]}, "VendEase Premier Inn": {"total": 205, "offline": [{"serial": "SVM0000167", "partner": "VendEase Premier Inn", "location": "Premier Inn Faversham", "days_offline": 2}, {"serial": "SVM0000164", "partner": "VendEase Premier Inn", "location": "Premier Inn Bognor Regis (Seafront)", "days_offline": 2}, {"serial": "SVM0000190", "partner": "VendEase Premier Inn", "location": "Premier Inn Chichester South (Gate Leisure Park)", "days_offline": 2}, {"serial": "SVM0000183", "partner": "VendEase Premier Inn", "location": "Premier Inn Sittingbourne Kent", "days_offline": 2}, {"serial": "SVM0000317", "partner": "VendEase Premier Inn", "location": "Premier Inn Hatfield", "days_offline": 2}, {"serial": "SVM0000356", "partner": "VendEase Premier Inn", "location": "Premier Inn London Stratford", "days_offline": 2}]}, "VendEase Travelodge": {"total": 31, "offline": []}, "WLV": {"total": 181, "offline": [{"serial": "SVM0000088", "partner": "WLV", "location": "Premier Inn Kidderminster ", "days_offline": 2}, {"serial": "SVM0000073", "partner": "WLV", "location": "Premier Inn Malvern ", "days_offline": 2}, {"serial": "IVM0006424", "partner": "WLV", "location": "Premier Inn Birmingham City Centre (New St Station) ", "days_offline": 2}, {"serial": "IVM0006228", "partner": "WLV", "location": "Premier Inn Birmingham NEC/Airport ", "days_offline": 2}, {"serial": "IVM0006210", "partner": "WLV", "location": "Premier Inn Manchester Central ", "days_offline": 2}]}, "JW Vending": {"total": 63, "offline": [{"serial": "IVM0007882", "partner": "JW Vending", "location": "Premier Inn Exeter St Davids", "days_offline": 2}, {"serial": "IVM0007872", "partner": "JW Vending", "location": "Premier Inn Bridgewater Gatway", "days_offline": 2}, {"serial": "IVM0007863", "partner": "JW Vending", "location": "Premier Inn Cardiff Zip", "days_offline": 2}, {"serial": "IVM0007852", "partner": "JW Vending", "location": "Premier Inn Cardiff Zip", "days_offline": 2}, {"serial": "IVM0007849", "partner": "JW Vending", "location": "Premier Inn Cardiff Stadium", "days_offline": 2}, {"serial": "SVM0000854", "partner": "JW Vending", "location": "Premier Inn Exmouth ", "days_offline": 2}, {"serial": "SVM0000847", "partner": "JW Vending", "location": "Premier Inn Exeter City Center", "days_offline": 2}, {"serial": "SVM0000845", "partner": "JW Vending", "location": "Premier Inn Torquay Harbour", "days_offline": 2}, {"serial": "SVM0000837", "partner": "JW Vending", "location": "Premier Inn Cardiff City West", "days_offline": 2}, {"serial": "SVM0000833", "partner": "JW Vending", "location": "Premier Inn Cribbs", "days_offline": 2}, {"serial": "SVM0000812", "partner": "JW Vending", "location": "Premier WSM Lympsham", "days_offline": 2}, {"serial": "SVM0000828", "partner": "JW Vending", "location": "Premier Inn Tiverton", "days_offline": 2}, {"serial": "SVM0000816", "partner": "JW Vending", "location": "Premier Inn Torquay Harbour", "days_offline": 2}]}, "V4 Vending": {"total": 1, "offline": []}, "Wilkes Vending": {"total": 22, "offline": [{"serial": "IVM0007821", "partner": "Wilkes Vending", "location": "Premier Inn Scarborough North Bay", "days_offline": 2}, {"serial": "SVM0000817", "partner": "Wilkes Vending", "location": "Premier Inn Bishop Auckland", "days_offline": 2}]}}, "unmatched_offline": 72};
+const KNOWN_ORDER = ['Abercromby Vending', 'VendEase Premier Inn', 'VendEase Travelodge', 'WLV', 'JW Vending', 'V4 Vending', 'Wilkes Vending'];
+const ICONS = {
+  'Abercromby Vending': '&#127970;',
+  'VendEase Premier Inn': '&#128716;',
+  'VendEase Travelodge': '&#128717;',
+  'WLV': '&#127981;',
+  'JW Vending': '&#127981;',
+  'V4 Vending': '&#127981;',
+  'Wilkes Vending': '&#127981;'
+};
+const PARTNERS = [...KNOWN_ORDER, ...Object.keys(DATA.partners).filter(p => !KNOWN_ORDER.includes(p))];
+
+const runD = new Date(DATA.date);
+const runTimePart = DATA.run_timestamp ? DATA.run_timestamp.split(' ').slice(1).join(' ') : '';
+document.getElementById('hdr-date').textContent = runD.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) + (runTimePart ? ' · ' + runTimePart : '');
+
+let totalOffline = 0, totalMachines = 0;
+PARTNERS.forEach(p => {
+  const pd = DATA.partners[p];
+  if (!pd) return;
+  totalMachines += pd.total || 0;
+  totalOffline += pd.offline.length;
+});
+document.getElementById('hdr-offline').textContent = totalOffline;
+document.getElementById('hdr-machines').textContent = totalMachines;
+
+function dayPill(days) {
+  const cls = days >= 4 ? 'danger' : 'warning';
+  return `<span class="pill ${cls}">${days}d</span>`;
+}
+
+let html = '';
+PARTNERS.forEach(p => {
+  const pd = DATA.partners[p];
+  if (!pd) return;
+  const offline = pd.offline;
+  const hasOffline = offline.length > 0;
+  const icon = ICONS[p] || '&#127970;';
+  html += `<div class="card ${hasOffline ? 'has-offline' : ''}">
+    <div class="card-head">
+      <span class="name"><span>${icon}</span>${p}</span>
+      <span class="badge ${hasOffline ? 'bad' : 'ok'}">${offline.length}/${pd.total}</span>
+    </div>`;
+  if (!hasOffline) {
+    html += `<div class="all-clear">&#10003; All online</div>`;
+  } else {
+    html += `<div class="col-head"><span>Location</span><span>Days</span></div>`;
+    const sorted = offline.slice().sort((a, b) => (b.days_offline - a.days_offline) || a.location.localeCompare(b.location));
+    sorted.forEach(o => {
+      html += `<div class="row">
+        <span class="loc">${o.location}<span class="serial">${o.serial}</span></span>
+        ${dayPill(o.days_offline)}
+      </div>`;
+    });
+  }
+  html += `</div>`;
+});
+document.getElementById('grid').innerHTML = html;
+document.getElementById('footer').textContent = 'Source: Mars portal Terminals export, Online Status column · machines with no matching partner file are excluded';
+document.getElementById('footer-note').textContent = DATA.unmatched_offline
+  ? DATA.unmatched_offline + ' offline terminal(s) had no matching partner/location record and are not shown'
+  : '';
+</script>
+</body>
+</html>

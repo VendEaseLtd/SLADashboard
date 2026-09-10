@@ -135,7 +135,7 @@ header p.desc { font-size: 12.5px; color: var(--muted); max-width: 560px; line-h
 .machine-serial { display: block; font-size: 10px; color: var(--faint); font-family: monospace; margin-top: 1px; font-weight: 400; }
 .machine-metrics {
   display: grid;
-  grid-template-columns: 1fr 52px 52px 68px 46px 40px;
+  grid-template-columns: 1fr 52px 52px 46px 40px;
   gap: 6px;
   margin-top: 6px;
 }
@@ -171,7 +171,7 @@ footer .push-time { margin-top: 3px; }
   <div>
     <div class="eyebrow"><span class="dot"></span>VendEase &middot; Live Inventory Feed</div>
     <h1>SLA Breach Monitor</h1>
-    <p class="desc">Machines where Snacks, Water Selections, or Other Drinks has fallen below 15% of that section's stock baseline &mdash; the confirmed breach rule from the stock availability data.</p>
+    <p class="desc">Machines where Snacks or Water Selections has fallen below 15% of that section's stock baseline &mdash; the confirmed breach rule from the stock availability data.</p>
     <a class="nav-btn" href="https://vendeaseltd.github.io/SLADashboard/VendEase_offline.html">&#128246; Offline machines</a>
   </div>
   <div class="meta" id="hdr-meta"></div>
@@ -207,7 +207,7 @@ footer .push-time { margin-top: 3px; }
 </div>
 
 <script>
-const DATA = {"date": "2026-09-10", "run_timestamp": "2026-09-10 13:44 BST", "inventory_pulled": "10 Sep 2026 \u00b7 13:41 BST", "terminals_pulled": "10 Sep 2026 \u00b7 13:42 BST", "totals": {"machines": 608, "breaches": 6, "rate": 1.0, "all3": 1, "bySection": {"Snacks": 2, "Water Selections": 4, "Other Drinks": 3}, "offline": {"count": 52, "of": 608, "rate": 8.6}, "mostBreachedSection": "Water Selections", "mostBreachedCount": 4, "mostBreachedVs": "2 Snacks, 3 Other", "partnersAffected": 3, "partnersTotal": 8, "partnersAffectedNames": ["Abercromby Vending", "VendEase Premier Inn", "WLV"]}, "partnerRates": [{"partner": "Abercromby Vending", "breaches": 2, "machines": 79, "rate": 2.5, "offline": 14}, {"partner": "VendEase Premier Inn", "breaches": 3, "machines": 205, "rate": 1.5, "offline": 6}, {"partner": "VendEase Travelodge", "breaches": 0, "machines": 31, "rate": 0.0, "offline": 1}, {"partner": "WLV", "breaches": 1, "machines": 181, "rate": 0.6, "offline": 7}, {"partner": "JW Vending", "breaches": 0, "machines": 63, "rate": 0.0, "offline": 17}, {"partner": "V4 Vending", "breaches": 0, "machines": 1, "rate": 0.0, "offline": 0}, {"partner": "Wilkes Vending", "breaches": 0, "machines": 38, "rate": 0.0, "offline": 7}, {"partner": "Bettavend", "breaches": 0, "machines": 10, "rate": 0.0, "offline": 0}], "breaches": [{"partner": "VendEase Premier Inn", "location": "Premier Inn London Wembley Park", "serial": "IVM0004555", "water_pct": 0.0, "snack_pct": 27.165354330708663, "other_pct": 24.285714285714285, "breach_water": true, "breach_snack": false, "breach_other": false, "online": "Yes", "days": 1}, {"partner": "VendEase Premier Inn", "location": "Premier Inn London Edgware (2)", "serial": "IVM0006489", "water_pct": 12.0, "snack_pct": 61.023622047244096, "other_pct": 52.85714285714286, "breach_water": true, "breach_snack": false, "breach_other": false, "online": "Yes", "days": 1}, {"partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "serial": "SVM0000294", "water_pct": 0.0, "snack_pct": 0.0, "other_pct": 0.0, "breach_water": true, "breach_snack": true, "breach_other": true, "online": "No", "days": 90}, {"partner": "Abercromby Vending", "location": "Premier Inn Milngavie", "serial": "SVM0000296", "water_pct": 0.0, "snack_pct": 43.24324324324324, "other_pct": 0.0, "breach_water": true, "breach_snack": false, "breach_other": true, "online": "No", "days": 68}, {"partner": "WLV", "location": "Premier Inn Manchester (Swinton) ", "serial": "SVM0000248", "water_pct": 57.49999999999999, "snack_pct": 9.865470852017937, "other_pct": 78.75, "breach_water": false, "breach_snack": true, "breach_other": false, "online": "Yes", "days": 9}, {"partner": "VendEase Premier Inn", "location": "Premier Inn Gravesend Central", "serial": "SVM0000133", "water_pct": 42.0, "snack_pct": 60.23622047244095, "other_pct": 12.857142857142856, "breach_water": false, "breach_snack": false, "breach_other": true, "online": "Yes", "days": 1}], "last_github_push": "2026-09-10 13:46 BST"};
+const DATA = {"date": "2026-09-10", "run_timestamp": "2026-09-10 14:00 BST", "inventory_pulled": "10 Sep 2026 \u00b7 13:41 BST", "terminals_pulled": "10 Sep 2026 \u00b7 13:42 BST", "last_github_push": "2026-09-10 14:02 BST", "totals": {"machines": 608, "breaches": 5, "rate": 0.8, "all2": 1, "bySection": {"Snacks": 2, "Water Selections": 4}, "offline": {"count": 52, "of": 608, "rate": 8.6}}, "partnerRates": [{"partner": "Abercromby Vending", "breaches": 2, "machines": 79, "rate": 2.5, "offline": 14}, {"partner": "VendEase Premier Inn", "breaches": 2, "machines": 205, "rate": 1.0, "offline": 6}, {"partner": "VendEase Travelodge", "breaches": 0, "machines": 31, "rate": 0.0, "offline": 1}, {"partner": "WLV", "breaches": 1, "machines": 181, "rate": 0.6, "offline": 7}, {"partner": "JW Vending", "breaches": 0, "machines": 63, "rate": 0.0, "offline": 17}, {"partner": "V4 Vending", "breaches": 0, "machines": 1, "rate": 0.0, "offline": 0}, {"partner": "Wilkes Vending", "breaches": 0, "machines": 38, "rate": 0.0, "offline": 7}, {"partner": "Bettavend", "breaches": 0, "machines": 10, "rate": 0.0, "offline": 0}], "breaches": [{"partner": "VendEase Premier Inn", "location": "Premier Inn London Wembley Park", "serial": "IVM0004555", "water_pct": 0.0, "snack_pct": 27.165354330708663, "breach_water": true, "breach_snack": false, "online": "Yes", "days": 1}, {"partner": "VendEase Premier Inn", "location": "Premier Inn London Edgware (2)", "serial": "IVM0006489", "water_pct": 12.0, "snack_pct": 61.023622047244096, "breach_water": true, "breach_snack": false, "online": "Yes", "days": 1}, {"partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "serial": "SVM0000294", "water_pct": 0.0, "snack_pct": 0.0, "breach_water": true, "breach_snack": true, "online": "No", "days": 90}, {"partner": "Abercromby Vending", "location": "Premier Inn Milngavie", "serial": "SVM0000296", "water_pct": 0.0, "snack_pct": 43.24324324324324, "breach_water": true, "breach_snack": false, "online": "No", "days": 68}, {"partner": "WLV", "location": "Premier Inn Manchester (Swinton) ", "serial": "SVM0000248", "water_pct": 57.49999999999999, "snack_pct": 9.865470852017937, "breach_water": false, "breach_snack": true, "online": "Yes", "days": 9}]};
 const KNOWN_ORDER = ['Abercromby Vending', 'VendEase Premier Inn', 'VendEase Travelodge', 'WLV', 'JW Vending', 'V4 Vending', 'Wilkes Vending', 'Bettavend'];
 const PALETTE = ['var(--partner-1)', 'var(--partner-2)', 'var(--partner-3)', 'var(--partner-4)'];
 
@@ -247,7 +247,7 @@ const affected = DATA.partnerRates.filter(p => p.breaches > 0).map(p => p.partne
 const tiles = [
   { cls: 'tile crit', label: 'Machines in breach', value: t.breaches, sub: `of ${t.machines} documented &middot; ${t.rate}%` },
   { cls: 'tile warn', label: 'Machines offline', value: t.offline.count, sub: `of ${t.offline.of} documented &middot; ${t.offline.rate}%` },
-  { cls: 'tile', label: 'Empty on all 3 sections', value: t.all3, sub: 'Snacks, Water &amp; Other Drinks all &le;15%' },
+  { cls: 'tile', label: 'Empty on both sections', value: t.all2, sub: 'Snacks &amp; Water Selections both &le;15%' },
   { cls: 'tile accent', label: 'Most breached section', value: topCount, sub: `${topSection} &middot; vs. ${restSections || 'none'}` },
   { cls: 'tile', label: 'Partners affected', value: affected.length, sub: `of ${DATA.partnerRates.length} &middot; ${affected.join(', ') || 'none'}` },
 ];
@@ -282,7 +282,6 @@ const cardsHtml = KNOWN_ORDER.filter(p => byPartner[p] && byPartner[p].length).m
         <div class="metric-cell"></div>
         <div class="metric-cell"><span class="m-label">Water</span>${pill(b.water_pct)}</div>
         <div class="metric-cell"><span class="m-label">Snacks</span>${pill(b.snack_pct)}</div>
-        <div class="metric-cell"><span class="m-label">Other Drinks</span>${pill(b.other_pct)}</div>
         <div class="metric-cell"><span class="m-label">Online</span>${onlineTag}</div>
         <div class="metric-cell"><span class="m-label">Days</span>${dayTag}</div>
       </div>

@@ -129,20 +129,29 @@ header p.desc { font-size: 12.5px; color: var(--muted); max-width: 560px; line-h
 .partner-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
 .partner-card-head h3 { font-size: 13.5px; font-weight: 700; color: var(--ink); }
 .partner-card-sub { font-size: 11px; color: var(--muted); font-weight: 600; }
-.machine { border-top: 1px solid #E2E7EF; padding: 8px 0; }
-.machine:first-of-type { border-top: none; }
-.metric-location { font-size: 12.5px; font-weight: 600; color: var(--ink); }
-.machine-serial { display: block; font-size: 10px; color: var(--faint); font-family: monospace; margin-top: 1px; font-weight: 400; }
-.machine-metrics {
+.col-head {
   display: grid;
   grid-template-columns: 1fr 52px 52px 46px 40px;
   gap: 6px;
-  margin-top: 6px;
+  padding: 0 0 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--faint);
 }
-.metric-cell { text-align: right; }
-.metric-cell:first-child { text-align: left; }
-.m-label { font-size: 9.5px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-bottom: 2px; }
-.metric { font-size: 12px; font-weight: 600; }
+.col-head span:not(:first-child) { text-align: right; }
+.row {
+  display: grid;
+  grid-template-columns: 1fr 52px 52px 46px 40px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border-top: 1px solid #E2E7EF;
+}
+.row:first-of-type { border-top: none; }
+.loc { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.machine-serial { display: block; font-size: 10px; color: var(--faint); font-family: monospace; margin-top: 1px; font-weight: 400; }
+.metric { font-size: 12px; font-weight: 600; text-align: right; justify-self: end; }
 .metric.crit { color: var(--crit); }
 .metric.warn { color: var(--warn); }
 .metric.good { color: var(--good); }
@@ -207,7 +216,7 @@ footer .push-time { margin-top: 3px; }
 </div>
 
 <script>
-const DATA = {"date": "2026-09-10", "run_timestamp": "2026-09-10 14:00 BST", "inventory_pulled": "10 Sep 2026 \u00b7 13:41 BST", "terminals_pulled": "10 Sep 2026 \u00b7 13:42 BST", "last_github_push": "2026-09-10 14:02 BST", "totals": {"machines": 608, "breaches": 5, "rate": 0.8, "all2": 1, "bySection": {"Snacks": 2, "Water Selections": 4}, "offline": {"count": 52, "of": 608, "rate": 8.6}}, "partnerRates": [{"partner": "Abercromby Vending", "breaches": 2, "machines": 79, "rate": 2.5, "offline": 14}, {"partner": "VendEase Premier Inn", "breaches": 2, "machines": 205, "rate": 1.0, "offline": 6}, {"partner": "VendEase Travelodge", "breaches": 0, "machines": 31, "rate": 0.0, "offline": 1}, {"partner": "WLV", "breaches": 1, "machines": 181, "rate": 0.6, "offline": 7}, {"partner": "JW Vending", "breaches": 0, "machines": 63, "rate": 0.0, "offline": 17}, {"partner": "V4 Vending", "breaches": 0, "machines": 1, "rate": 0.0, "offline": 0}, {"partner": "Wilkes Vending", "breaches": 0, "machines": 38, "rate": 0.0, "offline": 7}, {"partner": "Bettavend", "breaches": 0, "machines": 10, "rate": 0.0, "offline": 0}], "breaches": [{"partner": "VendEase Premier Inn", "location": "Premier Inn London Wembley Park", "serial": "IVM0004555", "water_pct": 0.0, "snack_pct": 27.165354330708663, "breach_water": true, "breach_snack": false, "online": "Yes", "days": 1}, {"partner": "VendEase Premier Inn", "location": "Premier Inn London Edgware (2)", "serial": "IVM0006489", "water_pct": 12.0, "snack_pct": 61.023622047244096, "breach_water": true, "breach_snack": false, "online": "Yes", "days": 1}, {"partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "serial": "SVM0000294", "water_pct": 0.0, "snack_pct": 0.0, "breach_water": true, "breach_snack": true, "online": "No", "days": 90}, {"partner": "Abercromby Vending", "location": "Premier Inn Milngavie", "serial": "SVM0000296", "water_pct": 0.0, "snack_pct": 43.24324324324324, "breach_water": true, "breach_snack": false, "online": "No", "days": 68}, {"partner": "WLV", "location": "Premier Inn Manchester (Swinton) ", "serial": "SVM0000248", "water_pct": 57.49999999999999, "snack_pct": 9.865470852017937, "breach_water": false, "breach_snack": true, "online": "Yes", "days": 9}]};
+const DATA = {"date": "2026-09-10", "run_timestamp": "2026-09-10 14:00 BST", "inventory_pulled": "10 Sep 2026 \u00b7 13:41 BST", "terminals_pulled": "10 Sep 2026 \u00b7 13:42 BST", "last_github_push": "2026-09-10 14:06 BST", "totals": {"machines": 608, "breaches": 5, "rate": 0.8, "all2": 1, "bySection": {"Snacks": 2, "Water Selections": 4}, "offline": {"count": 52, "of": 608, "rate": 8.6}}, "partnerRates": [{"partner": "Abercromby Vending", "breaches": 2, "machines": 79, "rate": 2.5, "offline": 14}, {"partner": "VendEase Premier Inn", "breaches": 2, "machines": 205, "rate": 1.0, "offline": 6}, {"partner": "VendEase Travelodge", "breaches": 0, "machines": 31, "rate": 0.0, "offline": 1}, {"partner": "WLV", "breaches": 1, "machines": 181, "rate": 0.6, "offline": 7}, {"partner": "JW Vending", "breaches": 0, "machines": 63, "rate": 0.0, "offline": 17}, {"partner": "V4 Vending", "breaches": 0, "machines": 1, "rate": 0.0, "offline": 0}, {"partner": "Wilkes Vending", "breaches": 0, "machines": 38, "rate": 0.0, "offline": 7}, {"partner": "Bettavend", "breaches": 0, "machines": 10, "rate": 0.0, "offline": 0}], "breaches": [{"partner": "VendEase Premier Inn", "location": "Premier Inn London Wembley Park", "serial": "IVM0004555", "water_pct": 0.0, "snack_pct": 27.165354330708663, "breach_water": true, "breach_snack": false, "online": "Yes", "days": 1}, {"partner": "VendEase Premier Inn", "location": "Premier Inn London Edgware (2)", "serial": "IVM0006489", "water_pct": 12.0, "snack_pct": 61.023622047244096, "breach_water": true, "breach_snack": false, "online": "Yes", "days": 1}, {"partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "serial": "SVM0000294", "water_pct": 0.0, "snack_pct": 0.0, "breach_water": true, "breach_snack": true, "online": "No", "days": 90}, {"partner": "Abercromby Vending", "location": "Premier Inn Milngavie", "serial": "SVM0000296", "water_pct": 0.0, "snack_pct": 43.24324324324324, "breach_water": true, "breach_snack": false, "online": "No", "days": 68}, {"partner": "WLV", "location": "Premier Inn Manchester (Swinton) ", "serial": "SVM0000248", "water_pct": 57.49999999999999, "snack_pct": 9.865470852017937, "breach_water": false, "breach_snack": true, "online": "Yes", "days": 9}]};
 const KNOWN_ORDER = ['Abercromby Vending', 'VendEase Premier Inn', 'VendEase Travelodge', 'WLV', 'JW Vending', 'V4 Vending', 'Wilkes Vending', 'Bettavend'];
 const PALETTE = ['var(--partner-1)', 'var(--partner-2)', 'var(--partner-3)', 'var(--partner-4)'];
 
@@ -276,15 +285,12 @@ const cardsHtml = KNOWN_ORDER.filter(p => byPartner[p] && byPartner[p].length).m
   const machinesHtml = rows.map(b => {
     const dayTag = b.days > 1 ? `<span class="metric good">${b.days}d</span>` : '<span class="metric">&mdash;</span>';
     const onlineTag = b.online === 'Yes' ? '<span class="metric good">Yes</span>' : '<span class="metric crit">No</span>';
-    return `<div class="machine">
-      <div class="metric-location">${b.location}<span class="machine-serial">${b.serial}</span></div>
-      <div class="machine-metrics">
-        <div class="metric-cell"></div>
-        <div class="metric-cell"><span class="m-label">Water</span>${pill(b.water_pct)}</div>
-        <div class="metric-cell"><span class="m-label">Snacks</span>${pill(b.snack_pct)}</div>
-        <div class="metric-cell"><span class="m-label">Online</span>${onlineTag}</div>
-        <div class="metric-cell"><span class="m-label">Days</span>${dayTag}</div>
-      </div>
+    return `<div class="row">
+      <span class="loc">${b.location}<span class="machine-serial">${b.serial}</span></span>
+      ${pill(b.water_pct)}
+      ${pill(b.snack_pct)}
+      ${onlineTag}
+      ${dayTag}
     </div>`;
   }).join('');
   return `<div class="partner-card" style="--pc:${partnerColor(p)}">
@@ -292,6 +298,7 @@ const cardsHtml = KNOWN_ORDER.filter(p => byPartner[p] && byPartner[p].length).m
       <h3>${p}</h3>
       <div class="partner-card-sub">${pr.breaches} of ${pr.machines} machines &middot; ${pr.rate}%</div>
     </div>
+    <div class="col-head"><span>Location</span><span>Water</span><span>Snacks</span><span>Online</span><span>Days</span></div>
     ${machinesHtml}
   </div>`;
 }).join('');

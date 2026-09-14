@@ -312,5 +312,16 @@ document.getElementById('footer-push').textContent = DATA.last_github_push
   ? 'Last uploaded to GitHub: ' + DATA.last_github_push
   : 'Last uploaded to GitHub: not yet recorded';
 </script>
+<script>
+// Auto-refresh: cache-busted hard reload every 3.5 hours, keeps this page in sync with the 3-hourly SLA push task.
+(function () {
+  var REFRESH_MS = 3.5 * 60 * 60 * 1000; // 12,600,000 ms
+  setTimeout(function () {
+    var url = new URL(window.location.href);
+    url.searchParams.set('_r', Date.now().toString());
+    window.location.href = url.toString();
+  }, REFRESH_MS);
+})();
+</script>
 </body>
 </html>

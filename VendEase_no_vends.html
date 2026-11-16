@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VendEase No Vends Dashboard</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EFF2F7;
+  --ink: #151C26;
+  --muted: #4A5567;
+  --faint: #7C879A;
+  --border: #D6DEE8;
+  --white: #FFFFFF;
+  --eyebrow: #204A96;
+  --crit: #B93A2A;
+  --warn: #A96D0A;
+  --good: #1C8459;
+  --accent: #204A96;
+  --track: #E7ECF3;
+  --callout-bg: #DEE8FA;
+  --callout-ink: #0F2E63;
+  --partner-1: #6955EE;
+  --partner-2: #C34B00;
+  --partner-3: #D0126F;
+  --partner-4: #0078E9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 22px;
+  font-size: 13px;
+}
+.wrap { max-width: 1280px; margin: 0 auto; }
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+.eyebrow {
+  color: var(--eyebrow);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crit); display: inline-block; }
+h1 { font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+header p.desc { font-size: 12.5px; color: var(--muted); max-width: 560px; line-height: 1.45; }
+.meta { font-size: 11.2px; color: var(--faint); text-align: right; line-height: 1.6; white-space: nowrap; }
+.meta b { color: var(--muted); font-weight: 600; }
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-btn:hover { background: #f5f7fb; }
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 13px;
+  box-shadow: 0 1px 2px rgba(20,30,50,.06), 0 8px 24px -12px rgba(20,30,50,.18);
+}
+.tile .label { font-size: 10.3px; color: var(--faint); font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 4px; }
+.tile .value { font-size: 25px; font-weight: 700; color: var(--ink); line-height: 1; }
+.tile.crit .value { color: var(--crit); }
+.tile.good .value { color: var(--good); }
+.tile.accent .value { color: var(--accent); }
+.tile .sub { font-size: 10.8px; color: var(--faint); margin-top: 4px; }
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px rgba(20,30,50,.06), 0 8px 24px -12px rgba(20,30,50,.18);
+  margin-top: 12px;
+}
+.panel h2 { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.panel .desc { font-size: 11.2px; color: var(--muted); margin-bottom: 12px; }
+.chart-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+.chart-label { width: 190px; font-size: 12px; color: var(--ink); flex-shrink: 0; }
+.chart-track { flex: 1; background: var(--track); height: 11px; border-radius: 3px; overflow: hidden; }
+.chart-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+.chart-fill.hot { background: var(--crit); }
+.chart-val { width: 130px; text-align: right; font-size: 11.5px; color: var(--muted); flex-shrink: 0; }
+.legend-row { display: flex; gap: 18px; margin-top: 10px; }
+.legend-row .item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+.legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.partner-card {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--pc, var(--accent));
+  background: #F7F9FC;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.partner-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.partner-card-head h3 { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+.partner-card-sub { font-size: 11px; color: var(--muted); font-weight: 600; }
+.machine-list { display: flex; flex-direction: column; }
+.machine-row {
+  display: grid;
+  grid-template-columns: 1fr 52px 46px;
+  gap: 8px;
+  align-items: center;
+  padding: 5px 0;
+  border-top: 1px solid #E2E7EF;
+}
+.machine-row:first-of-type { border-top: none; }
+.metric-location { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.machine-serial { display: block; font-size: 10px; color: var(--faint); font-family: monospace; margin-top: 1px; font-weight: 400; }
+.metric { font-size: 12px; font-weight: 600; text-align: right; }
+.metric.crit { color: var(--crit); }
+.metric.warn { color: var(--warn); }
+.metric.good { color: var(--good); }
+.all-clear { font-size: 12px; color: var(--good); padding: 4px 0; }
+.callout {
+  background: var(--callout-bg);
+  color: var(--callout-ink);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 13px;
+  font-size: 11.5px;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+footer {
+  margin-top: 16px;
+  font-size: 10.5px;
+  color: var(--faint);
+  text-align: right;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="eyebrow"><span class="dot"></span>VendEase &middot; Payter Transactions Feed</div>
+    <h1>48hrs Without Vends</h1>
+    <p class="desc">Partner machines whose Payter card reader recorded no approved sale (card or cash) across the previous two full days. Where a machine is also offline, the missing sales are likely a connectivity issue rather than no demand.</p>
+    <a class="nav-btn" href="https://vendeaseltd.github.io/SLADashboard/SLA_Dashboard.html">&#128202; SLA breaches</a>
+    <a class="nav-btn" href="https://vendeaseltd.github.io/SLADashboard/VendEase_offline.html">&#128246; Offline machines</a>
+  </div>
+  <div class="meta" id="hdr-meta"></div>
+</header>
+
+<div class="tiles" id="tiles"></div>
+
+<div class="panel">
+  <h2>No-vend rate by partner</h2>
+  <p class="desc">Share of each partner's Payter-linked machines with no sale in the window &mdash; raw count and monitored fleet labelled alongside.</p>
+  <div id="chart"></div>
+  <div class="legend-row">
+    <div class="item"><span class="legend-swatch" style="background:var(--crit)"></span>&ge;1 without vends</div>
+    <div class="item"><span class="legend-swatch" style="background:var(--accent)"></span>all vending</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Machines without vends, by partner</h2>
+  <p class="desc">Days is the minimum run of days with no approved sale (the 2-day window plus any earlier runs it was already flagged). Online is the Invenda terminal status at this run.</p>
+  <div class="partner-grid" id="partner-grid"></div>
+  <div class="callout" id="footer-note"></div>
+</div>
+
+<footer>
+  <div id="footer-line"></div>
+</footer>
+</div>
+
+<script>
+const DATA = {"date": "2026-11-16", "window_start": "2026-11-14", "window_end": "2026-11-15", "payter_pulled": "16 Nov 2026 \u00b7 10:04 GMT", "partners": {"Abercromby Vending": {"total": 94, "monitored": 87, "no_vend": [{"serial": "IVM0006476", "payter": "P6X20233700658", "location": "Premier Inn Edinburgh Park (2)", "online": "No", "days": 2}, {"serial": "SVM0000249", "payter": "P6X20234400871", "location": "Premier Inn Dumfries (1)", "online": "Yes", "days": 2}, {"serial": "SVM0000278", "payter": "P6X20234101192", "location": "Premier Inn Dumfries (2)", "online": "No", "days": 2}, {"serial": "SVM0000287", "payter": "P6X20233700315", "location": "Premier Inn Edinburgh East", "online": "Yes", "days": 2}, {"serial": "SVM0000289", "payter": "P6X20233402989", "location": "Premier Inn Dunfermline", "online": "Yes", "days": 2}, {"serial": "2203022", "payter": "P6X20233402395", "location": "Premier Inn Cumbernauld", "online": "", "days": 2}, {"serial": "2921011804", "payter": "P6X20233402560", "location": "Premier Inn Oban* (2)", "online": "", "days": 2}]}, "VendEase Premier Inn": {"total": 205, "monitored": 205, "no_vend": [{"serial": "IVM0002025", "payter": "P6X20233402748", "location": "Premier Inn Bicester", "online": "Yes", "days": 2}, {"serial": "SVM0000171", "payter": "P6X20235000995", "location": "Premier Inn Canterbury City Centre", "online": "Yes", "days": 2}, {"serial": "SVM0000184", "payter": "P6X20235000771", "location": "Premier Inn Hastings North A21", "online": "Yes", "days": 2}]}, "WLV": {"total": 183, "monitored": 178, "no_vend": [{"serial": "IVM0006234", "payter": "P6X20233700380", "location": "Premier Inn Birmingham South (Hall Green)", "online": "No", "days": 2}, {"serial": "SVM0000271", "payter": "P6X20233700521", "location": "Premier Inn Manchester (Handforth)", "online": "No", "days": 2}, {"serial": "SVM0000375", "payter": "P6X20233700445", "location": "Premier Inn St. Helens South", "online": "No", "days": 2}, {"serial": "SVM0000599", "payter": "P6X20235000881", "location": "Premier Inn Gloucester (Little Witcombe)", "online": "Yes", "days": 2}]}, "VendEase Travelodge": {"total": 31, "monitored": 0, "no_vend": []}, "JW Vending": {"total": 77, "monitored": 73, "no_vend": [{"serial": "SVM0000826", "payter": "P6X20234101289", "location": "Premier WSM East (2)", "online": "Yes", "days": 2}]}, "V4 Vending": {"total": 24, "monitored": 24, "no_vend": []}, "Wilkes Vending": {"total": 69, "monitored": 69, "no_vend": [{"serial": "SVM0000796", "payter": "P6X20234103067", "location": "Premier Inn Harrogate Town Centre", "online": "Yes", "days": 2}, {"serial": "SVM0000870", "payter": "P6X20234101368", "location": "Premier Inn Scarborough North Bay (1)", "online": "Yes", "days": 2}, {"serial": "IVM0007821", "payter": "P6X20234101312", "location": "Premier Inn Scarborough North Bay (2)", "online": "No", "days": 2}]}, "Bettavend": {"total": 20, "monitored": 20, "no_vend": [{"serial": "IVM0007961", "payter": "P6X20234103205", "location": "Premier Inn Poole North", "online": "Yes", "days": 2}]}, "Morvend": {"total": 50, "monitored": 48, "no_vend": [{"serial": "SVM0000886", "payter": "P6X20234102509", "location": "Premier Inn Corby", "online": "Yes", "days": 2}, {"serial": "SVM0000887", "payter": "P6X20234101919", "location": "Premier Inn Peterborough Ferry", "online": "Yes", "days": 2}]}, "Welcome Vending": {"total": 21, "monitored": 0, "no_vend": []}}, "unlinked": {"Abercromby Vending": 7, "WLV": 5, "VendEase Travelodge": 31, "JW Vending": 4, "Morvend": 2, "Welcome Vending": 21}};
+const KNOWN_ORDER = ['Abercromby Vending', 'VendEase Premier Inn', 'VendEase Travelodge', 'WLV', 'JW Vending', 'V4 Vending', 'Wilkes Vending', 'Bettavend', 'Morvend', 'Welcome Vending'];
+const PALETTE = ['var(--partner-1)', 'var(--partner-2)', 'var(--partner-3)', 'var(--partner-4)'];
+function partnerColor(p) { const i = KNOWN_ORDER.indexOf(p); return PALETTE[(i >= 0 ? i : 0) % 4]; }
+function dayClass(d) { if (d >= 7) return 'crit'; if (d >= 3) return 'warn'; return 'good'; }
+const fmt = s => { const d = new Date(s + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); };
+const runD = new Date(DATA.date);
+const dateStr = runD.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+document.getElementById('hdr-meta').innerHTML =
+  `Sales window <b>${fmt(DATA.window_start)} &ndash; ${fmt(DATA.window_end)}</b> (00:00&ndash;23:59)<br>Payter export pulled <b>${DATA.payter_pulled}</b><br>Source: MyPayter &middot; Invenda CMS`;
+const partners = KNOWN_ORDER.map(p => {
+  const pd = DATA.partners[p] || { total: 0, monitored: 0, no_vend: [] };
+  return { partner: p, total: pd.total, monitored: pd.monitored, list: pd.no_vend || [] };
+});
+const monitored = partners.reduce((a, p) => a + p.monitored, 0);
+const totalFleet = partners.reduce((a, p) => a + p.total, 0);
+const totalNo = partners.reduce((a, p) => a + p.list.length, 0);
+const rate = monitored ? (totalNo / monitored * 100).toFixed(1) : '0.0';
+const offlineNo = partners.reduce((a, p) => a + p.list.filter(m => m.online === 'No').length, 0);
+const affected = partners.filter(p => p.list.length > 0);
+const tiles = [
+  { cls: 'tile crit', label: 'Machines without vends', value: totalNo, sub: `of ${monitored} Payter-linked &middot; ${rate}%` },
+  { cls: 'tile good', label: 'Machines vending', value: monitored - totalNo, sub: `of ${monitored} Payter-linked (${totalFleet} documented)` },
+  { cls: 'tile accent', label: 'Also offline', value: offlineNo, sub: `of ${totalNo} without vends &middot; likely connectivity` },
+  { cls: 'tile', label: 'Partners affected', value: affected.length, sub: `of ${partners.length} &middot; ${affected.map(p=>p.partner).join(', ') || 'none'}` },
+];
+document.getElementById('tiles').innerHTML = tiles.map(x =>
+  `<div class="${x.cls}"><div class="label">${x.label}</div><div class="value">${x.value}</div><div class="sub">${x.sub}</div></div>`).join('');
+const rates = partners.map(p => ({ ...p, rate: p.monitored ? (p.list.length / p.monitored * 100) : 0 }))
+  .sort((a, b) => b.rate - a.rate || b.list.length - a.list.length);
+const maxRate = Math.max(1, ...rates.map(p => p.rate)) * 1.2;
+document.getElementById('chart').innerHTML = rates.map(p => {
+  const hot = p.list.length > 0;
+  const widthPct = hot ? Math.max(3, (p.rate / maxRate) * 100) : 1.2;
+  const val = p.monitored ? `${p.rate.toFixed(1)}% (${p.list.length} of ${p.monitored})` : 'no Payter link';
+  return `<div class="chart-row"><div class="chart-label">${p.partner}</div>
+    <div class="chart-track"><div class="chart-fill ${hot ? 'hot' : ''}" style="width:${widthPct}%"></div></div>
+    <div class="chart-val">${val}</div></div>`;
+}).join('');
+const cardsHtml = partners.filter(p => p.list.length > 0).map(p => {
+  const sorted = p.list.slice().sort((a, b) => b.days - a.days || a.location.localeCompare(b.location));
+  const rows = sorted.map(m => `<div class="machine-row">
+    <div><div class="metric-location">${m.location}<span class="machine-serial">${m.serial} &middot; Payter ${m.payter}</span></div></div>
+    <div class="metric ${m.online === 'No' ? 'crit' : 'good'}">${m.online === 'No' ? 'Offline' : (m.online === 'Yes' ? 'Online' : '&mdash;')}</div>
+    <div class="metric ${dayClass(m.days)}">${m.days}d</div></div>`).join('');
+  return `<div class="partner-card" style="--pc:${partnerColor(p.partner)}">
+    <div class="partner-card-head"><h3>${p.partner}</h3>
+    <div class="partner-card-sub">${p.list.length} of ${p.monitored} machines</div></div>
+    <div class="machine-list">${rows}</div></div>`;
+}).join('');
+document.getElementById('partner-grid').innerHTML = cardsHtml || '<div class="all-clear">&#10003; Every Payter-linked machine made a sale.</div>';
+const unl = DATA.unlinked || {};
+const unlParts = Object.entries(unl).filter(([k, v]) => v > 0).map(([k, v]) => `${k} ${v}`);
+document.getElementById('footer-note').textContent = unlParts.length
+  ? `Scope of this view: ${Object.values(unl).reduce((a, b) => a + b, 0)} partner machine(s) have no Payter serial in All Partners.xlsx and cannot be checked (${unlParts.join(', ')}).`
+  : 'Every partner machine is linked to a Payter serial.';
+document.getElementById('footer-line').textContent =
+  `VendEase No-Vends Dashboard · generated from the MyPayter transactions export, ${dateStr}`;
+</script>
+</body>
+</html>

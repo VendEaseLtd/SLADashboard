@@ -170,7 +170,7 @@ footer {
   <div>
     <div class="eyebrow"><span class="dot"></span>VendEase &middot; Card Transactions Feed</div>
     <h1>48hrs Without Vends</h1>
-    <p class="desc">Partner machines with no approved card sale on their Payter reader across the previous two full days (matched by Payter serial or Creditcall terminal ID). Where a machine is also offline, the missing sales are likely a connectivity issue rather than no demand.</p>
+    <p class="desc">Partner machines with no approved sale across the previous two full days &mdash; checked against Creditcall WebMIS (card) and Easitrax (card + cash), matched by Payter serial or terminal ID. Where a machine is also offline, the missing sales are likely a connectivity issue rather than no demand.</p>
     <a class="nav-btn" href="https://vendeaseltd.github.io/SLADashboard/SLA_Dashboard.html">&#128202; SLA breaches</a>
     <a class="nav-btn" href="https://vendeaseltd.github.io/SLADashboard/VendEase_offline.html">&#128246; Offline machines</a>
   </div>
@@ -181,7 +181,7 @@ footer {
 
 <div class="panel">
   <h2>No-vend rate by partner</h2>
-  <p class="desc">Share of each partner's Payter-linked machines with no sale in the window &mdash; raw count and monitored fleet labelled alongside.</p>
+  <p class="desc">Share of each partner's monitored machines with no sale in the window &mdash; raw count and monitored fleet labelled alongside.</p>
   <div id="chart"></div>
   <div class="legend-row">
     <div class="item"><span class="legend-swatch" style="background:var(--crit)"></span>&ge;1 without vends</div>
@@ -202,17 +202,17 @@ footer {
 </div>
 
 <script>
-const DATA = {"date": "2026-11-16", "source": "webmis", "window_start": "2026-11-14", "window_end": "2026-11-15", "payter_pulled": "16 Nov 2026 \u00b7 11:35 GMT", "partners": {"Abercromby Vending": {"total": 94, "monitored": 87, "no_vend": [{"serial": "IVM0006476", "payter": "P6X20233700658", "location": "Premier Inn Edinburgh Park (2)", "online": "No", "days": 2}, {"serial": "SVM0000249", "payter": "P6X20234400871", "location": "Premier Inn Dumfries (1)", "online": "Yes", "days": 2}, {"serial": "SVM0000278", "payter": "P6X20234101192", "location": "Premier Inn Dumfries (2)", "online": "No", "days": 2}, {"serial": "SVM0000287", "payter": "P6X20233700315", "location": "Premier Inn Edinburgh East", "online": "Yes", "days": 2}, {"serial": "SVM0000289", "payter": "P6X20233402989", "location": "Premier Inn Dunfermline", "online": "Yes", "days": 2}, {"serial": "2203022", "payter": "P6X20233402395", "location": "Premier Inn Cumbernauld", "online": "", "days": 2}, {"serial": "2921011804", "payter": "P6X20233402560", "location": "Premier Inn Oban* (2)", "online": "", "days": 2}]}, "VendEase Premier Inn": {"total": 205, "monitored": 205, "no_vend": [{"serial": "IVM0002025", "payter": "P6X20233402748", "location": "Premier Inn Bicester", "online": "Yes", "days": 2}]}, "WLV": {"total": 183, "monitored": 180, "no_vend": [{"serial": "90166345", "payter": "308598/30135370", "location": "Premier Inn Wirral (Heswall)", "online": "", "days": 2}, {"serial": "90191455", "payter": "30131878", "location": "Premier Inn Nuneaton/Coventry", "online": "", "days": 2}, {"serial": "IVM0006234", "payter": "P6X20233700380", "location": "Premier Inn Birmingham South (Hall Green)", "online": "No", "days": 2}, {"serial": "SVM0000271", "payter": "P6X20233700521", "location": "Premier Inn Manchester (Handforth)", "online": "No", "days": 2}, {"serial": "SVM0000375", "payter": "P6X20233700445", "location": "Premier Inn St. Helens South", "online": "No", "days": 2}]}, "VendEase Travelodge": {"total": 31, "monitored": 0, "no_vend": []}, "JW Vending": {"total": 77, "monitored": 73, "no_vend": [{"serial": "SVM0000826", "payter": "P6X20234101289", "location": "Premier WSM East (2)", "online": "Yes", "days": 2}]}, "V4 Vending": {"total": 24, "monitored": 24, "no_vend": []}, "Wilkes Vending": {"total": 69, "monitored": 69, "no_vend": [{"serial": "SVM0000796", "payter": "P6X20234103067", "location": "Premier Inn Harrogate Town Centre", "online": "Yes", "days": 2}, {"serial": "SVM0000870", "payter": "P6X20234101368", "location": "Premier Inn Scarborough North Bay (1)", "online": "Yes", "days": 2}, {"serial": "IVM0007821", "payter": "P6X20234101312", "location": "Premier Inn Scarborough North Bay (2)", "online": "No", "days": 2}]}, "Bettavend": {"total": 20, "monitored": 20, "no_vend": [{"serial": "IVM0007961", "payter": "P6X20234103205", "location": "Premier Inn Poole North", "online": "Yes", "days": 2}]}, "Morvend": {"total": 50, "monitored": 48, "no_vend": [{"serial": "SVM0000886", "payter": "P6X20234102509", "location": "Premier Inn Corby", "online": "Yes", "days": 2}, {"serial": "SVM0000887", "payter": "P6X20234101919", "location": "Premier Inn Peterborough Ferry", "online": "Yes", "days": 2}]}, "Welcome Vending": {"total": 21, "monitored": 21, "no_vend": []}}, "unlinked": {"Abercromby Vending": 7, "WLV": 3, "VendEase Travelodge": 31, "JW Vending": 4, "Morvend": 2}};
+const DATA = {"date": "2026-11-16", "sources": ["Creditcall WebMIS", "Easitrax"], "window_start": "2026-11-14", "window_end": "2026-11-15", "payter_pulled": "16 Nov 2026 \u00b7 11:53 GMT", "partners": {"Abercromby Vending": {"total": 94, "monitored": 94, "no_vend": [{"serial": "IVM0006476", "payter": "P6X20233700658", "location": "Premier Inn Edinburgh Park (2)", "online": "No", "days": 2}, {"serial": "SVM0000249", "payter": "P6X20234400871", "location": "Premier Inn Dumfries (1)", "online": "Yes", "days": 2}, {"serial": "SVM0000278", "payter": "P6X20234101192", "location": "Premier Inn Dumfries (2)", "online": "No", "days": 2}, {"serial": "SVM0000287", "payter": "P6X20233700315", "location": "Premier Inn Edinburgh East", "online": "Yes", "days": 2}, {"serial": "SVM0000289", "payter": "P6X20233402989", "location": "Premier Inn Dunfermline", "online": "Yes", "days": 2}, {"serial": "SVM0000300", "payter": "P6X20233401710", "location": "Premier Inn Stirling M9", "online": "Yes", "days": 2}, {"serial": "2203022", "payter": "P6X20233402395", "location": "Premier Inn Cumbernauld", "online": "", "days": 2}, {"serial": "2921011804", "payter": "P6X20233402560", "location": "Premier Inn Oban* (2)", "online": "", "days": 2}]}, "VendEase Premier Inn": {"total": 358, "monitored": 358, "no_vend": [{"serial": "IVM0002025", "payter": "P6X20233402748", "location": "Premier Inn Bicester", "online": "Yes", "days": 2}, {"serial": "1000000027", "payter": "279130/30077772", "location": "Premier Inn London King's Cross", "online": "", "days": 2}, {"serial": "90355987", "payter": "285333/30129524", "location": "Premier Inn London Sutton", "online": "", "days": 2}, {"serial": "1000000070", "payter": "308587/30069123", "location": "hub London Westminster, St James's Park", "online": "", "days": 2}, {"serial": "1000000072", "payter": "351670/30092438", "location": "hub London Covent Garden", "online": "", "days": 2}, {"serial": "90168588", "payter": "424144/30103404", "location": "Premier Inn Braintree (A120)", "online": "", "days": 2}, {"serial": "90339998", "payter": "P6X20233401843", "location": "Premier Inn London City (Old Street)", "online": "", "days": 2}, {"serial": "90264572", "payter": "P6X20234102671", "location": "Premier Inn Maidstone (Sandling)", "online": "", "days": 2}, {"serial": "90458223", "payter": "P6X20235000827", "location": "Premier Inn Bognor Regis", "online": "", "days": 2}, {"serial": "1000000413", "payter": "10790637", "location": "Premier Inn London Hayes, Heathrow (Hyde Park)", "online": "", "days": 2}, {"serial": "1000000412", "payter": "10790635", "location": "Premier Inn London Holborn", "online": "", "days": 2}, {"serial": "1000000411", "payter": "10790636", "location": "Premier Inn London Euston", "online": "", "days": 2}, {"serial": "1000000410", "payter": "10790634", "location": "Premier Inn London County Hall", "online": "", "days": 2}, {"serial": "1000000356", "payter": "10790633", "location": "Premier Inn London Waterloo (Westminster Bridge)", "online": "", "days": 2}, {"serial": "1000000298", "payter": "10790745", "location": "Premier Inn London Tolworth", "online": "", "days": 2}]}, "WLV": {"total": 183, "monitored": 181, "no_vend": [{"serial": "90166345", "payter": "30135370", "location": "Premier Inn Wirral (Heswall)", "online": "", "days": 2}, {"serial": "IVM0006234", "payter": "P6X20233700380", "location": "Premier Inn Birmingham South (Hall Green)", "online": "No", "days": 2}, {"serial": "SVM0000271", "payter": "P6X20233700521", "location": "Premier Inn Manchester (Handforth)", "online": "No", "days": 2}, {"serial": "SVM0000375", "payter": "P6X20233700445", "location": "Premier Inn St. Helens South", "online": "No", "days": 2}]}, "VendEase Travelodge": {"total": 31, "monitored": 0, "no_vend": []}, "JW Vending": {"total": 77, "monitored": 74, "no_vend": [{"serial": "SVM0000826", "payter": "P6X20234101289", "location": "Premier WSM East (2)", "online": "Yes", "days": 2}]}, "V4 Vending": {"total": 24, "monitored": 24, "no_vend": []}, "Wilkes Vending": {"total": 69, "monitored": 69, "no_vend": [{"serial": "SVM0000796", "payter": "P6X20234103067", "location": "Premier Inn Harrogate Town Centre", "online": "Yes", "days": 2}, {"serial": "SVM0000870", "payter": "P6X20234101368", "location": "Premier Inn Scarborough North Bay (1)", "online": "Yes", "days": 2}, {"serial": "IVM0007821", "payter": "P6X20234101312", "location": "Premier Inn Scarborough North Bay (2)", "online": "No", "days": 2}]}, "Bettavend": {"total": 20, "monitored": 20, "no_vend": [{"serial": "IVM0007961", "payter": "P6X20234103205", "location": "Premier Inn Poole North", "online": "Yes", "days": 2}]}, "Morvend": {"total": 50, "monitored": 50, "no_vend": [{"serial": "SVM0000886", "payter": "P6X20234102509", "location": "Premier Inn Corby", "online": "Yes", "days": 2}, {"serial": "SVM0000887", "payter": "P6X20234101919", "location": "Premier Inn Peterborough Ferry", "online": "Yes", "days": 2}]}, "Welcome Vending": {"total": 21, "monitored": 20, "no_vend": []}}, "unlinked": {"WLV": 2, "VendEase Travelodge": 31, "JW Vending": 3, "Welcome Vending": 1}, "extra_from_all_partners": 153};
 const KNOWN_ORDER = ['Abercromby Vending', 'VendEase Premier Inn', 'VendEase Travelodge', 'WLV', 'JW Vending', 'V4 Vending', 'Wilkes Vending', 'Bettavend', 'Morvend', 'Welcome Vending'];
 const PALETTE = ['var(--partner-1)', 'var(--partner-2)', 'var(--partner-3)', 'var(--partner-4)'];
 function partnerColor(p) { const i = KNOWN_ORDER.indexOf(p); return PALETTE[(i >= 0 ? i : 0) % 4]; }
 function dayClass(d) { if (d >= 7) return 'crit'; if (d >= 3) return 'warn'; return 'good'; }
 const fmt = s => { const d = new Date(s + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); };
-const SRC_LABEL = DATA.source === 'payter' ? 'MyPayter' : 'Creditcall WebMIS';
+const SRC_LABEL = (DATA.sources || []).join(' + ') || 'card';
 const runD = new Date(DATA.date);
 const dateStr = runD.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 document.getElementById('hdr-meta').innerHTML =
-  `Sales window <b>${fmt(DATA.window_start)} &ndash; ${fmt(DATA.window_end)}</b> (00:00&ndash;23:59)<br>${SRC_LABEL} export pulled <b>${DATA.payter_pulled}</b><br>Source: ${SRC_LABEL} &middot; Invenda CMS`;
+  `Sales window <b>${fmt(DATA.window_start)} &ndash; ${fmt(DATA.window_end)}</b> (00:00&ndash;23:59)<br>Exports pulled <b>${DATA.payter_pulled}</b><br>Source: ${SRC_LABEL} &middot; Invenda CMS`;
 const partners = KNOWN_ORDER.map(p => {
   const pd = DATA.partners[p] || { total: 0, monitored: 0, no_vend: [] };
   return { partner: p, total: pd.total, monitored: pd.monitored, list: pd.no_vend || [] };
@@ -224,8 +224,8 @@ const rate = monitored ? (totalNo / monitored * 100).toFixed(1) : '0.0';
 const offlineNo = partners.reduce((a, p) => a + p.list.filter(m => m.online === 'No').length, 0);
 const affected = partners.filter(p => p.list.length > 0);
 const tiles = [
-  { cls: 'tile crit', label: 'Machines without vends', value: totalNo, sub: `of ${monitored} Payter-linked &middot; ${rate}%` },
-  { cls: 'tile good', label: 'Machines vending', value: monitored - totalNo, sub: `of ${monitored} Payter-linked (${totalFleet} documented)` },
+  { cls: 'tile crit', label: 'Machines without vends', value: totalNo, sub: `of ${monitored} monitored &middot; ${rate}%` },
+  { cls: 'tile good', label: 'Machines vending', value: monitored - totalNo, sub: `of ${monitored} monitored (${totalFleet} documented)` },
   { cls: 'tile accent', label: 'Also offline', value: offlineNo, sub: `of ${totalNo} without vends &middot; likely connectivity` },
   { cls: 'tile', label: 'Partners affected', value: affected.length, sub: `of ${partners.length} &middot; ${affected.map(p=>p.partner).join(', ') || 'none'}` },
 ];
@@ -237,7 +237,7 @@ const maxRate = Math.max(1, ...rates.map(p => p.rate)) * 1.2;
 document.getElementById('chart').innerHTML = rates.map(p => {
   const hot = p.list.length > 0;
   const widthPct = hot ? Math.max(3, (p.rate / maxRate) * 100) : 1.2;
-  const val = p.monitored ? `${p.rate.toFixed(1)}% (${p.list.length} of ${p.monitored})` : 'no Payter link';
+  const val = p.monitored ? `${p.rate.toFixed(1)}% (${p.list.length} of ${p.monitored})` : 'no ID on file';
   return `<div class="chart-row"><div class="chart-label">${p.partner}</div>
     <div class="chart-track"><div class="chart-fill ${hot ? 'hot' : ''}" style="width:${widthPct}%"></div></div>
     <div class="chart-val">${val}</div></div>`;
@@ -245,7 +245,7 @@ document.getElementById('chart').innerHTML = rates.map(p => {
 const cardsHtml = partners.filter(p => p.list.length > 0).map(p => {
   const sorted = p.list.slice().sort((a, b) => b.days - a.days || a.location.localeCompare(b.location));
   const rows = sorted.map(m => `<div class="machine-row">
-    <div><div class="metric-location">${m.location}<span class="machine-serial">${m.serial} &middot; Payter ${m.payter}</span></div></div>
+    <div><div class="metric-location">${m.location}<span class="machine-serial">${m.serial} &middot; ${m.payter}</span></div></div>
     <div class="metric ${m.online === 'No' ? 'crit' : 'good'}">${m.online === 'No' ? 'Offline' : (m.online === 'Yes' ? 'Online' : '&mdash;')}</div>
     <div class="metric ${dayClass(m.days)}">${m.days}d</div></div>`).join('');
   return `<div class="partner-card" style="--pc:${partnerColor(p.partner)}">
@@ -258,9 +258,10 @@ const unl = DATA.unlinked || {};
 const unlParts = Object.entries(unl).filter(([k, v]) => v > 0).map(([k, v]) => `${k} ${v}`);
 document.getElementById('footer-note').textContent = unlParts.length
   ? `Scope of this view: ${Object.values(unl).reduce((a, b) => a + b, 0)} partner machine(s) have no Payter serial/TID in All Partners.xlsx and cannot be checked (${unlParts.join(', ')}).`
-  : 'Every partner machine is linked to a Payter serial.';
+  : 'Every partner machine is linked to a Payter serial or terminal ID.';
+if (DATA.extra_from_all_partners) document.getElementById('footer-note').textContent += ` Includes ${DATA.extra_from_all_partners} machine(s) listed only in All Partners.xlsx (not in the SLA partner files).`;
 document.getElementById('footer-line').textContent =
-  `VendEase No-Vends Dashboard · generated from the ${SRC_LABEL} transactions export, ${dateStr}`;
+  `VendEase No-Vends Dashboard · generated from the ${SRC_LABEL} exports, ${dateStr}`;
 </script>
 </body>
 </html>

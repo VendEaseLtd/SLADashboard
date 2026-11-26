@@ -125,7 +125,7 @@ tbody tr{transition:.12s} tbody tr:hover{background:rgba(255,255,255,.03)}
 .pcard table{table-layout:fixed;width:100%}
 .pcard td.id,.pcard th{white-space:nowrap}
 .pcard td.id{font-variant-numeric:tabular-nums;letter-spacing:.01em}
-@media (min-width:821px){.pcard td.loc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.pcard td.loc{white-space:normal}
 .subid{display:block;font-size:11.5px;color:var(--ink3);margin-top:3px;font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere}
 @media (max-width:820px){.pcard th{font-size:10px;letter-spacing:.04em;white-space:normal}}
 .pcard.clear{opacity:.75}
@@ -198,6 +198,12 @@ html,body{overflow-x:hidden}
 @media (min-width:1900px){.app{max-width:2200px}body{font-size:15px}.kpi .v{font-size:40px}.card h3{font-size:18px}}
 @media (min-width:2500px){.app{max-width:3000px;grid-template-columns:340px 1fr}body{font-size:17px}.kpi .v{font-size:48px}.card h3{font-size:21px}th{font-size:13px}.iss{font-size:17px}.issn{font-size:13px}
   .legend div{font-size:15px}#donut{width:260px;height:260px}.pgrid{grid-template-columns:repeat(auto-fill,minmax(900px,1fr))}}
+/* partner cards side by side (2026-11-26) — column count adapts to screen width */
+#t-sla{grid-template-columns:repeat(auto-fill,minmax(min(600px,100%),1fr))}
+#t-off{grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr))}
+#t-nv{grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr))}
+@media (min-width:2500px){#t-sla{grid-template-columns:repeat(auto-fill,minmax(760px,1fr))}#t-off{grid-template-columns:repeat(auto-fill,minmax(460px,1fr))}#t-nv{grid-template-columns:repeat(auto-fill,minmax(560px,1fr))}}
+@media (max-width:820px){#t-sla,#t-off,#t-nv{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -363,10 +369,10 @@ function renderTable(v){
   const V=VIEWS[v],[k,dir]=state.sort[v];
   const cmp=(a,b)=>((a[k]??-1)>(b[k]??-1)?1:(a[k]??-1)<(b[k]??-1)?-1:0)*dir;
   const small=window.matchMedia('(max-width:820px)').matches;
-  const cols=V.cols.filter(c=>c[0]!=='partner'&&!(small&&c[3]&&c[3].includes('hide-s')));
+  const cols=V.cols.filter(c=>c[0]!=='partner'&&!(c[3]&&c[3].includes('hide-s')));
   const denom=p=>v==='nv'?P[p].nvMon:P[p].machines;
   const color={sla:'#fb7185',off:'#38bdf8',nv:'#34d399'}[v];
-  const WID=(small?{sla:{water_pct:'22%',snack_pct:'22%',online:'72px',days:'64px'},off:{days_offline:'96px'},nv:{online:'84px',days:'64px'}}:{sla:{serial:'150px',water_pct:'140px',snack_pct:'140px',online:'110px',days:'80px'},off:{serial:'150px',days_offline:'130px'},nv:{serial:'150px',payter:'200px',online:'120px',days:'80px'}})[v];
+  const WID=(small?{sla:{water_pct:'22%',snack_pct:'22%',online:'72px',days:'64px'},off:{days_offline:'96px'},nv:{online:'84px',days:'64px'}}:{sla:{water_pct:'118px',snack_pct:'118px',online:'92px',days:'60px'},off:{days_offline:'110px'},nv:{online:'108px',days:'60px'}})[v];
   const cg=`<colgroup>${cols.map(c=>`<col class="${c[3]&&c[3].includes('hide-s')?'hide-s':''}" style="width:${WID[c[0]]||'auto'}">`).join('')}</colgroup>`;
   const head=cg+`<thead><tr>${cols.map(c=>`<th class="${c[3]||''}" data-sort="${v}:${c[0]}">${c[1]}${k===c[0]?(dir>0?' ↑':' ↓'):''}</th>`).join('')}</tr></thead>`;
   const parts=ORDER.filter(p=>!state.partner||p===state.partner);
@@ -377,7 +383,7 @@ function renderTable(v){
   let html=withRows.map(([p,rows])=>`<div class="card glass pcard"><div class="ph">${logo(p,'lg')}<b>${esc(p)}</b>
     <span class="ct"><strong>${rows.length}</strong>of ${denom(p)} · ${pct(rows.length,p).toFixed(1)}%</span></div>
     <div class="pbar"><i style="width:${Math.min(100,pct(rows.length,p)*4)}%;background:${color}"></i></div>
-    <div class="tablewrap"><table>${head}<tbody>${rows.map(r=>`<tr>${cols.map(c=>`<td class="${c[3]||''} ${c[0]==='location'?'loc':'id'}" ${c[0]==='location'?`title="${esc(r.location)}"`:''}>${c[2]?c[2](r):c[0]==='location'?`${esc(r.location)}${small?`<span class="subid">${esc(r.serial)}${r.payter?' · '+esc(r.payter):''}</span>`:''}`:esc(r[c[0]])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`).join('');
+    <div class="tablewrap"><table>${head}<tbody>${rows.map(r=>`<tr>${cols.map(c=>`<td class="${c[3]||''} ${c[0]==='location'?'loc':'id'}" ${c[0]==='location'?`title="${esc(r.location)}"`:''}>${c[2]?c[2](r):c[0]==='location'?`${esc(r.location)}${true?`<span class="subid">${esc(r.serial)}${r.payter?' · '+esc(r.payter):''}</span>`:''}`:esc(r[c[0]])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`).join('');
   if(clear.length) html+=`<div style="grid-column:1/-1"><div class="note" style="margin:4px 2px 10px">${state.q?'No matches':'All clear'} · ${clear.length} partner${clear.length>1?'s':''}</div><div class="clearrow">${clear.map(([p])=>`<div class="card glass pcard clear"><div class="ph">${logo(p)}<b style="font-size:14px">${esc(p)}</b><span class="ct">${v==='nv'&&!P[p].nvMon?(unl[p]?'no ID on file':'—'):`<span class="tag t-on">0 of ${denom(p)}</span>`}</span></div></div>`).join('')}</div></div>`;
   if(v==='off'&&!state.partner&&DATA.unmatched&&DATA.unmatched.length){
     const U=DATA.unmatched.filter(u=>!state.q||(u.serial+' '+u.site).toLowerCase().includes(state.q));

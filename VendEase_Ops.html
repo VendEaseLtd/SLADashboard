@@ -258,7 +258,7 @@ const nvRows=[];Object.entries(N.partners).forEach(([p,v])=>{if(P[p]){P[p].nvMon
 const slaRows=S.breaches.map(b=>({...b}));
 const fleet=S.totals.machines, nOff=offRows.length, nvMon=Object.values(N.partners).reduce((a,p)=>a+p.monitored,0);
 const unl=N.unlinked||{};
-let state={view:'overview',partner:null,q:'',sort:{score:['issues',-1],sla:['days',-1],off:['days_offline',-1],nv:['days',-1]}};
+const _hv=(location.hash||'').slice(1);let state={view:(['overview','sla','off','nv'].includes(_hv)?_hv:'overview'),partner:null,q:'',sort:{score:['issues',-1],sla:['days',-1],off:['days_offline',-1],nv:['days',-1]}};
 
 // ---------- sparkline ----------
 function spark(vals,color,id){
@@ -404,6 +404,7 @@ $('#q').addEventListener('input',e=>{state.q=e.target.value.trim().toLowerCase()
 document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
 let _rw=innerWidth<=820;window.addEventListener('resize',()=>{const s=innerWidth<=820;if(s!==_rw){_rw=s;render()}});
 render();
+setTimeout(()=>location.replace(location.pathname+'?v='+Date.now()+location.hash),12600000);
 </script>
 </body>
 </html>

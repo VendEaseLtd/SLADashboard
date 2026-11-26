@@ -171,7 +171,7 @@ td{overflow-wrap:anywhere}
   td,th{padding:9px 5px}td{font-size:13px}.cellbar{grid-template-columns:1fr;gap:4px}.cellbar span{text-align:left}
   .hide-s{display:none}.vhead h2{font-size:22px}.chips{margin-left:0}
   .top{flex-wrap:wrap}.search{flex:1 1 100%}.top h1{margin-left:0;text-align:left;font-size:13px}.card{padding:16px}}
-@media (max-width:520px){.k4{grid-template-columns:1fr}.donut-wrap{flex-direction:column}}
+@media (max-width:520px){.k4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kpi{min-height:150px;padding:14px}.kpi .v{font-size:24px}.kpi .d{font-size:11.5px}.donut-wrap{flex-direction:column}}
 /* ---- responsive: all screens (2026-11-26) ---- */
 html,body{overflow-x:hidden}
 .card h3{flex-wrap:wrap;row-gap:4px}
@@ -344,7 +344,7 @@ function renderScore(){
   $('#score').innerHTML=`<thead><tr>${h('name','Partner')}${h('issues','Issues','r')}${h('machines','Machines','r')}${h('breaches','SLA','r')}${h('offline','Offline','r')}${h('nv','No vends 48h','r')}</tr></thead><tbody>`+
    rows.map(r=>`<tr data-p="${esc(r.name)}" style="cursor:pointer;opacity:${state.partner&&state.partner!==r.name?.4:1}"><td><span class="pname">${logo(r.name)}${esc(r.name)}</span></td><td class="r"><span class="iss ${r.issR>=.15?'d3':r.issR>=.05?'d2':'d1'}">${(r.issR*100).toFixed(1)}%</span><span class="issn">${r.issN} machine${r.issN===1?'':'s'}</span></td><td class="r" data-l="Machines">${r.machines}</td>
    <td class="r" data-l="SLA">${r.breaches?`<span class="tag t-off">${r.breaches}</span>`:'<span class="tag t-on">0</span>'}</td><td class="r" data-l="Offline">${numCell(r.offline,r.machines,'#38bdf8')}</td>
-   <td class="r" data-l="No vends 48h">${r.nvMon?numCell(r.nv,r.nvMon,'#34d399'):`<span class="note">${unl[r.name]?'no ID on file':'—'}</span>`}</td></tr>`).join('')+'</tbody>';
+   <td class="r" data-l="No vends">${r.nvMon?numCell(r.nv,r.nvMon,'#34d399'):`<span class="note">${unl[r.name]?'no ID on file':'—'}</span>`}</td></tr>`).join('')+'</tbody>';
 }
 const daysCls=d=>d>=14?'d3':d>=3?'d2':'d1';
 function match(r){const q=state.q;return (!state.partner||r.partner===state.partner)&&(!q||[r.location,r.serial,r.payter,r.partner].join(' ').toLowerCase().includes(q))}

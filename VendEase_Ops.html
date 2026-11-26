@@ -198,12 +198,13 @@ html,body{overflow-x:hidden}
 @media (min-width:1900px){.app{max-width:2200px}body{font-size:15px}.kpi .v{font-size:40px}.card h3{font-size:18px}}
 @media (min-width:2500px){.app{max-width:3000px;grid-template-columns:340px 1fr}body{font-size:17px}.kpi .v{font-size:48px}.card h3{font-size:21px}th{font-size:13px}.iss{font-size:17px}.issn{font-size:13px}
   .legend div{font-size:15px}#donut{width:260px;height:260px}.pgrid{grid-template-columns:repeat(auto-fill,minmax(900px,1fr))}}
-/* partner cards side by side (2026-11-26) — column count adapts to screen width */
-#t-sla{grid-template-columns:repeat(auto-fill,minmax(min(600px,100%),1fr))}
-#t-off{grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr))}
-#t-nv{grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr))}
-@media (min-width:2500px){#t-sla{grid-template-columns:repeat(auto-fill,minmax(760px,1fr))}#t-off{grid-template-columns:repeat(auto-fill,minmax(460px,1fr))}#t-nv{grid-template-columns:repeat(auto-fill,minmax(560px,1fr))}}
-@media (max-width:820px){#t-sla,#t-off,#t-nv{grid-template-columns:1fr}}
+/* partner cards side by side (2026-11-26) — packed columns (no gaps under short cards); column count adapts to screen width */
+#t-sla,#t-off,#t-nv{display:block;column-gap:18px}
+#t-sla{column-width:600px}#t-off{column-width:360px}#t-nv{column-width:440px}
+#t-sla>*,#t-off>*,#t-nv>*{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:18px;display:block;width:100%}
+#t-sla>[style*="grid-column"],#t-off>[style*="grid-column"],#t-nv>[style*="grid-column"]{column-span:all;-webkit-column-span:all}
+@media (min-width:2500px){#t-sla{column-width:760px}#t-off{column-width:460px}#t-nv{column-width:560px}}
+@media (max-width:820px){#t-sla,#t-off,#t-nv{columns:1}}
 </style>
 </head>
 <body>

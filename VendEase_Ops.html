@@ -300,6 +300,7 @@ function renderDonut(){
   $('#donut').innerHTML=s;$('#fleetsub').textContent='SLA fleet · Invenda';
   $('#legend').innerHTML=ORDER.map(p=>`<div data-p="${esc(p)}" style="cursor:pointer;opacity:${state.partner&&state.partner!==p?.4:1}"><span class="sw" style="background:${pc(p)}"></span>${logo(p)}<span class="n">${esc(p)}</span><span class="x"><b>${P[p].machines}</b></span><span class="x">${(P[p].machines/tot*100).toFixed(1)}%</span></div>`).join('');
 }
+function numCell(n,d,color){const p=d?n/d*100:0;return n?`<span class="iss" style="color:${color}">${n}</span><span class="issn">${p.toFixed(1)}% of ${d}</span>`:'<span class="iss" style="color:var(--ink3)">0</span>'}
 function pctCell(n,d,color){const p=d?n/d*100:0;return `<div class="cellbar"><div class="bar"><i style="width:${Math.min(100,p*4)}%;background:${color}"></i></div><span>${n?`${n} · ${p.toFixed(1)}%`:'—'}</span></div>`}
 function renderScore(){
   const [k,dir]=state.sort.score;const iss=p=>new Set([...slaRows,...offRows,...nvRows].filter(r=>r.partner===p).map(r=>r.serial)).size;
@@ -307,10 +308,10 @@ function renderScore(){
   const key={name:'name',machines:'machines',issues:'issR',breaches:'breaches',offline:'offR',nv:'nvR'}[k];
   rows.sort((a,b)=>((a[key]>b[key]?1:a[key]<b[key]?-1:0)||(a.issN-b.issN)||(a.breaches-b.breaches))*dir);
   const h=(id,l,c='')=>`<th class="${c}" data-sort="score:${id}">${l}${k===id?(dir>0?' ↑':' ↓'):''}</th>`;
-  $('#score').innerHTML=`<thead><tr>${h('name','Partner')}${h('issues','Issues','r')}${h('machines','Machines','r')}${h('breaches','SLA','r')}${h('offline','Offline')}${h('nv','No vends 48h')}</tr></thead><tbody>`+
+  $('#score').innerHTML=`<thead><tr>${h('name','Partner')}${h('issues','Issues','r')}${h('machines','Machines','r')}${h('breaches','SLA','r')}${h('offline','Offline','r')}${h('nv','No vends 48h','r')}</tr></thead><tbody>`+
    rows.map(r=>`<tr data-p="${esc(r.name)}" style="cursor:pointer;opacity:${state.partner&&state.partner!==r.name?.4:1}"><td><span class="pname">${logo(r.name)}${esc(r.name)}</span></td><td class="r"><span class="iss ${r.issR>=.15?'d3':r.issR>=.05?'d2':'d1'}">${(r.issR*100).toFixed(1)}%</span><span class="issn">${r.issN} machine${r.issN===1?'':'s'}</span></td><td class="r">${r.machines}</td>
-   <td class="r">${r.breaches?`<span class="tag t-off">${r.breaches}</span>`:'<span class="tag t-on">0</span>'}</td><td>${pctCell(r.offline,r.machines,'#38bdf8')}</td>
-   <td>${r.nvMon?pctCell(r.nv,r.nvMon,'#34d399'):`<span class="note">${unl[r.name]?'no ID on file':'—'}</span>`}</td></tr>`).join('')+'</tbody>';
+   <td class="r">${r.breaches?`<span class="tag t-off">${r.breaches}</span>`:'<span class="tag t-on">0</span>'}</td><td class="r">${numCell(r.offline,r.machines,'#38bdf8')}</td>
+   <td class="r">${r.nvMon?numCell(r.nv,r.nvMon,'#34d399'):`<span class="note">${unl[r.name]?'no ID on file':'—'}</span>`}</td></tr>`).join('')+'</tbody>';
 }
 const daysCls=d=>d>=14?'d3':d>=3?'d2':'d1';
 function match(r){const q=state.q;return (!state.partner||r.partner===state.partner)&&(!q||[r.location,r.serial,r.payter,r.partner].join(' ').toLowerCase().includes(q))}

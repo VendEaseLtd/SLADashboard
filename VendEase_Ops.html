@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VendEase Ops</title>
+<link rel="icon" href="data:image/png;base64,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">
+<style>
+:root{
+  --bg:#040a1c; --panel:rgba(14,22,52,.62); --panel2:rgba(20,30,70,.55); --line:rgba(130,160,255,.14); --line2:rgba(130,160,255,.24);
+  --ink:#eef2ff; --ink2:#a9b4d6; --ink3:#6f7aa3;
+  --indigo:#6d6af8; --violet:#8b7bff; --cyan:#38bdf8; --mint:#34d399; --rose:#fb7185; --amber:#fbbf24;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);
+  background-image:radial-gradient(900px 600px at 18% -10%,rgba(37,99,235,.55),transparent 60%),
+    radial-gradient(700px 500px at 85% 5%,rgba(56,120,255,.35),transparent 60%),
+    radial-gradient(800px 700px at 40% 110%,rgba(79,70,229,.30),transparent 60%);
+  background-attachment:fixed;font-size:14px;-webkit-font-smoothing:antialiased}
+.app{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:18px;min-height:100vh;max-width:1640px;margin:0 auto}
+.glass{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 10px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04)}
+/* sidebar */
+aside{padding:22px 16px;position:sticky;top:18px;height:calc(100vh - 36px);overflow:auto;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px 22px;font-weight:600;font-size:19px;letter-spacing:-.01em}
+.brand b{color:#F8A21A;font-weight:700}
+.velogo{width:34px;height:34px;border-radius:50%;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.08),0 4px 14px rgba(0,0,0,.35)}
+.navh{font-size:11px;letter-spacing:.12em;color:var(--ink3);margin:18px 10px 8px;font-weight:600}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;color:var(--ink2);text-decoration:none;cursor:pointer;font-weight:500;transition:.15s}
+.nav a:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.nav a.on{background:linear-gradient(90deg,rgba(109,106,248,.28),rgba(109,106,248,.10));color:#c7c5ff;box-shadow:inset 0 0 0 1px rgba(139,123,255,.25)}
+.nav a .cnt{margin-left:auto;font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--ink2)}
+.nav a.on .cnt{background:rgba(139,123,255,.25);color:#e0dcff}
+.nav svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7}
+.pl a{padding:7px 12px;font-size:13px}
+.pl .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.side-foot{margin-top:auto;padding:14px 10px 0;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink3);line-height:1.7}
+.side-foot b{color:var(--ink2);font-weight:500}
+/* main */
+main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.top{display:flex;align-items:center;gap:14px}
+.search{flex:0 1 420px;display:flex;align-items:center;gap:10px;padding:12px 16px}
+.search input{flex:1;background:none;border:0;outline:0;color:var(--ink);font:inherit}
+.search input::placeholder{color:var(--ink3)}
+.kbd{font-size:11px;color:var(--ink3);border:1px solid var(--line2);padding:2px 6px;border-radius:6px}
+.top h1{font-size:15px;font-weight:500;color:var(--ink2);margin-left:auto;text-align:right;line-height:1.4}
+.top h1 b{color:var(--ink);font-weight:600}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 10px;border-radius:99px;background:rgba(52,211,153,.14);color:var(--mint);font-weight:600}
+.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint)}
+.grid{display:grid;gap:18px}
+.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.c2{grid-template-columns:minmax(0,1.05fr) minmax(0,1.6fr)}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{padding:20px 22px;position:relative;overflow:hidden;min-width:0}
+.card h3{font-size:16px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.card h3 .sub{font-size:12px;color:var(--ink3);font-weight:400;margin-left:auto}
+.kpi .v{font-size:34px;font-weight:650;letter-spacing:-.02em;margin:12px 0 4px;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:15px;color:var(--ink3);font-weight:500;margin-left:6px}
+.kpi .d{font-size:12.5px;color:var(--ink2)}
+.up{color:var(--rose)} .down{color:var(--mint)} .flat{color:var(--ink2)}
+.spark{position:absolute;left:0;right:0;bottom:0;height:78px;opacity:.95}
+.kpi{min-height:200px}
+.pill{font-size:11px;border:1px solid var(--line2);color:var(--ink2);padding:4px 10px;border-radius:9px;background:rgba(255,255,255,.03)}
+/* donut */
+.donut-wrap{display:flex;align-items:center;gap:22px;margin-top:14px}
+.legend{flex:1;display:grid;gap:9px;min-width:0}
+.legend div{display:grid;grid-template-columns:10px 1fr auto auto;gap:10px;align-items:center;font-size:13px}
+.legend .n{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.legend .x{color:var(--ink3);font-variant-numeric:tabular-nums;text-align:right}
+.legend .x b{color:var(--ink);font-weight:600}
+/* scorecard */
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:600;text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none}
+th.r,td.r{text-align:right}
+td{padding:11px 8px;border-bottom:1px solid rgba(130,160,255,.07);font-variant-numeric:tabular-nums;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr{transition:.12s} tbody tr:hover{background:rgba(255,255,255,.03)}
+.bar{height:6px;border-radius:99px;background:rgba(255,255,255,.06);position:relative;min-width:70px}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:99px}
+.cellbar{display:grid;grid-template-columns:minmax(50px,1fr) 82px;gap:10px;align-items:center}
+.cellbar span{text-align:right;color:var(--ink2);font-size:12.5px;white-space:nowrap}
+.pname{white-space:nowrap}
+.pname{display:flex;align-items:center;gap:10px;font-weight:500}
+.pname .dot{width:9px;height:9px;border-radius:50%}
+.tag{font-size:11px;padding:3px 9px;border-radius:99px;font-weight:600;white-space:nowrap}
+.t-on{background:rgba(52,211,153,.13);color:var(--mint)} .t-off{background:rgba(251,113,133,.14);color:var(--rose)} .t-na{background:rgba(255,255,255,.06);color:var(--ink3)}
+.days{font-weight:600}
+.d1{color:var(--ink2)} .d2{color:var(--amber)} .d3{color:var(--rose)}
+/* lists */
+.list{margin-top:12px;display:grid}
+.row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:11px 0;border-bottom:1px solid rgba(130,160,255,.07);align-items:center}
+.row:last-child{border-bottom:0}
+.row .l{min-width:0}
+.row .l b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .l span{font-size:12px;color:var(--ink3)}
+.row .rr{text-align:right;font-size:12px;color:var(--ink3)}
+.row .rr b{display:block;font-size:14px;color:var(--ink)}
+.empty{color:var(--ink3);padding:24px 0;text-align:center}
+.more{margin-top:10px;font-size:12.5px;color:#b9b6ff;cursor:pointer;background:none;border:0;font:inherit}
+.gauge{display:flex;gap:6px;margin-top:14px}
+.gauge div{flex:1;text-align:center;padding:10px 6px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}
+.gauge b{display:block;font-size:18px} .gauge span{font-size:11px;color:var(--ink3)}
+.view{display:none;flex-direction:column;gap:18px} .view.on{display:flex}
+.vhead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.vhead h2{font-size:26px;font-weight:650;letter-spacing:-.02em}
+.vhead p{color:var(--ink2);max-width:720px;line-height:1.55;font-size:13.5px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.chip{font-size:12px;padding:6px 12px;border-radius:99px;border:1px solid var(--line2);color:var(--ink2);cursor:pointer;background:rgba(255,255,255,.02)}
+.chip.on{background:rgba(109,106,248,.25);color:#e0dcff;border-color:rgba(139,123,255,.45)}
+.pct{display:inline-flex;align-items:center;gap:8px}
+.pct i{display:inline-block;width:46px;height:5px;border-radius:99px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
+.pct i:after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--c);border-radius:99px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(760px,100%),1fr));gap:18px;align-items:start}
+.pcard{padding:18px 20px}
+.pcard .ph{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.pcard .ph b{font-size:16px;font-weight:600}
+.pcard .ph .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.pcard .ph .ct{margin-left:auto;font-size:12px;color:var(--ink2);text-align:right}
+.pcard .ph .ct strong{font-size:20px;color:var(--ink);font-weight:650;margin-right:4px}
+.pcard .pbar{height:5px;border-radius:99px;background:rgba(255,255,255,.06);margin:10px 0 6px;overflow:hidden}
+.pcard .pbar i{display:block;height:100%;border-radius:99px}
+.pcard table td,.pcard table th{padding:9px 8px}
+.pcard table{table-layout:fixed;width:100%}
+.pcard td.id,.pcard th{white-space:nowrap}
+.pcard td.id{font-variant-numeric:tabular-nums;letter-spacing:.01em}
+@media (min-width:821px){.pcard td.loc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.subid{display:block;font-size:11.5px;color:var(--ink3);margin-top:3px;font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere}
+@media (max-width:820px){.pcard th{font-size:10px;letter-spacing:.04em;white-space:normal}}
+.pcard.clear{opacity:.75}
+.clearrow{display:flex;flex-wrap:wrap;gap:10px}
+.clearrow .pcard{padding:12px 16px;flex:1 1 200px}
+@media (max-width:820px){.pgrid{grid-template-columns:1fr}}
+.app{transition:grid-template-columns .25s ease}
+.collapse{margin-left:auto;width:30px;height:30px;border-radius:9px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--ink2);cursor:pointer;display:grid;place-items:center;flex:none}
+.collapse:hover{color:var(--ink);background:rgba(255,255,255,.07)}
+.collapse svg{transition:transform .25s}
+body.mini .app{grid-template-columns:78px 1fr}
+body.mini aside{padding:18px 10px}
+body.mini .brand{flex-direction:column;gap:12px;padding:0 0 16px}
+body.mini .collapse{margin-left:0}
+body.mini .collapse svg{transform:rotate(180deg)}
+body.mini .lbl,body.mini .cnt,body.mini .navh,body.mini .side-foot{display:none}
+body.mini .nav a{justify-content:center;padding:11px 0}
+body.mini .pl{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+body.mini .pl a{padding:8px 0}
+body.mini .pl .dot{width:11px;height:11px}
+@media (max-width:1180px){.collapse{display:none}body.mini .lbl,body.mini .cnt{display:revert}body.mini .app{grid-template-columns:1fr}body.mini .brand{flex-direction:row;padding:0 4px 10px}body.mini .nav a{justify-content:flex-start;padding:8px 12px}body.mini aside{padding:14px}}
+.iss{display:block;font-weight:650;font-size:14.5px}.issn{display:block;font-size:11px;color:var(--ink3);white-space:nowrap}
+.note{font-size:12px;color:var(--ink3);line-height:1.6}
+.tablewrap{overflow-x:auto}
+td{overflow-wrap:anywhere}
+.ucat{margin-top:14px}.ucat h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin:6px 0 4px;display:flex;gap:8px}.ucat h4 span{color:var(--ink2)}
+.unote{font-size:12.5px;color:var(--ink2);line-height:1.55;margin-top:6px}
+@media (max-width:1180px){.k4{grid-template-columns:repeat(2,minmax(0,1fr))}.c2,.c3{grid-template-columns:1fr}
+  .app{grid-template-columns:1fr;gap:14px}aside{position:static;height:auto;padding:14px}.brand{padding:0 4px 10px}
+  .navh,.side-foot{display:none}.nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+  .nav a{flex:none;padding:8px 12px;font-size:13px}.pl{margin-top:8px}.pl a .cnt{display:none}}
+@media (max-width:820px){.app{padding:12px;gap:12px}
+  td,th{padding:9px 5px}td{font-size:13px}.cellbar{grid-template-columns:1fr;gap:4px}.cellbar span{text-align:left}
+  .hide-s{display:none}.vhead h2{font-size:22px}.chips{margin-left:0}
+  .top{flex-wrap:wrap}.search{flex:1 1 100%}.top h1{margin-left:0;text-align:left;font-size:13px}.card{padding:16px}}
+@media (max-width:520px){.k4{grid-template-columns:1fr}.donut-wrap{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="glass">
+    <div class="brand">
+      <img class="velogo" src="data:image/png;base64,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" alt="VendEase" width="34" height="34">
+      <span class="lbl">VendEase <b>Ops</b></span>
+      <button class="collapse" id="collapse" title="Collapse menu" aria-label="Collapse menu"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+    </div>
+    <div class="navh">MONITORING</div>
+    <nav class="nav" id="nav"></nav>
+    <div class="navh">PARTNERS</div>
+    <nav class="nav pl" id="plist"></nav>
+    <div class="side-foot" id="foot"></div>
+  </aside>
+  <main>
+    <div class="top">
+      <label class="search glass">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a9b4d6" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" placeholder="Search hotel, serial or Payter…">
+        <span class="kbd">/</span>
+      </label>
+      <span class="live">Live</span>
+      <h1 id="stamp"></h1>
+    </div>
+
+    <section class="view on" id="v-overview">
+      <div class="grid k4" id="kpis"></div>
+      <div class="grid c2">
+        <div class="card glass">
+          <h3>Fleet by partner <span class="sub" id="fleetsub"></span></h3>
+          <div class="donut-wrap"><svg id="donut" width="210" height="210" viewBox="0 0 210 210"></svg><div class="legend" id="legend"></div></div>
+        </div>
+        <div class="card glass">
+          <h3>Partner scorecard <span class="sub">worst first · issues = machines with an SLA breach, offline or no vends · click a column to sort</span></h3>
+          <div class="tablewrap"><table id="score"></table></div>
+        </div>
+      </div>
+      <div class="grid c3">
+        <div class="card glass"><h3>SLA breaches <span class="pill">&lt;15% stock</span></h3><div class="list" id="l-sla"></div></div>
+        <div class="card glass"><h3>Longest offline <span class="pill" id="offpill"></span></h3><div class="list" id="l-off"></div></div>
+        <div class="card glass"><h3>Without vends · 48hrs <span class="pill" id="nvpill"></span></h3><div class="list" id="l-nv"></div></div>
+      </div>
+    </section>
+
+    <section class="view" id="v-sla">
+      <div class="vhead"><div><h2>SLA breaches</h2><p>Machines where water (Radnor / Strathmore) or chocolate &amp; snack stock is below 15% of capacity. Motor-locked selections count as empty.</p></div><div class="chips" data-for="sla"></div></div>
+      <div class="grid k4" id="kpis-sla"></div>
+      <div class="pgrid" id="t-sla"></div>
+    </section>
+
+    <section class="view" id="v-off">
+      <div class="vhead"><div><h2>Offline machines</h2><p>Machines not reporting to Invenda telemetry, with days since they were first seen offline.</p></div><div class="chips" data-for="off"></div></div>
+      <div class="grid k4" id="kpis-off"></div>
+      <div class="pgrid" id="t-off"></div>
+    </section>
+
+    <section class="view" id="v-nv">
+      <div class="vhead"><div><h2>48hrs without vends</h2><p id="nvdesc"></p></div><div class="chips" data-for="nv"></div></div>
+      <div class="grid k4" id="kpis-nv"></div>
+      <div class="pgrid" id="t-nv"></div>
+    </section>
+  </main>
+</div>
+<script>
+const DATA = {"sla": {"date": "2026-11-26", "run_timestamp": "2026-11-26 12:11 GMT", "inventory_pulled": "26 Nov 2026 \u00b7 12:12 GMT", "terminals_pulled": "26 Nov 2026 \u00b7 12:13 GMT", "last_github_push": "2026-11-26 12:11 GMT", "totals": {"machines": 772, "breaches": 1, "rate": 0.1, "all2": 1, "bySection": {"Snacks": 1, "Water Selections": 1}, "offline": {"count": 58, "of": 772, "rate": 7.5}}, "partnerRates": [{"partner": "Abercromby Vending", "breaches": 1, "machines": 93, "rate": 1.1, "offline": 10}, {"partner": "VendEase Premier Inn", "breaches": 0, "machines": 204, "rate": 0.0, "offline": 7}, {"partner": "WLV", "breaches": 0, "machines": 181, "rate": 0.0, "offline": 8}, {"partner": "VendEase Travelodge", "breaches": 0, "machines": 31, "rate": 0.0, "offline": 0}, {"partner": "JW Vending", "breaches": 0, "machines": 77, "rate": 0.0, "offline": 19}, {"partner": "V4 Vending", "breaches": 0, "machines": 24, "rate": 0.0, "offline": 2}, {"partner": "Wilkes Vending", "breaches": 0, "machines": 69, "rate": 0.0, "offline": 5}, {"partner": "Bettavend", "breaches": 0, "machines": 20, "rate": 0.0, "offline": 3}, {"partner": "Morvend", "breaches": 0, "machines": 50, "rate": 0.0, "offline": 4}, {"partner": "Welcome Vending", "breaches": 0, "machines": 23, "rate": 0.0, "offline": 0}], "breaches": [{"partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "serial": "SVM0000294", "water_pct": 0.0, "snack_pct": 0.0, "breach_water": true, "breach_snack": true, "online": "No", "days": 167}]}, "off": {"date": "2026-11-26", "run_timestamp": "2026-11-26 12:11 GMT", "partners": {"Abercromby Vending": {"total": 93, "offline": [{"serial": "IVM0006476", "partner": "Abercromby Vending", "location": "Premier Inn Edinburgh Park (2)", "days_offline": 61}, {"serial": "SVM0000249", "partner": "Abercromby Vending", "location": "Premier Inn Dumfries (1)", "days_offline": 1}, {"serial": "SVM0000255", "partner": "Abercromby Vending", "location": "Premier Inn Edinburgh Royal Mile* (1)", "days_offline": 1}, {"serial": "SVM0000259", "partner": "Abercromby Vending", "location": "Premier Inn Elgin (1)", "days_offline": 94}, {"serial": "SVM0000266", "partner": "Abercromby Vending", "location": "Premier Inn Inverness East", "days_offline": 108}, {"serial": "SVM0000267", "partner": "Abercromby Vending", "location": "Premier Inn Inverness West* (1)", "days_offline": 1}, {"serial": "SVM0000284", "partner": "Abercromby Vending", "location": "Premier Inn Dundee Centre* (1)", "days_offline": 108}, {"serial": "SVM0000290", "partner": "Abercromby Vending", "location": "Premier Inn Aviemore", "days_offline": 46}, {"serial": "SVM0000294", "partner": "Abercromby Vending", "location": "Premier Inn Falkirk East", "days_offline": 108}, {"serial": "SVM0000307", "partner": "Abercromby Vending", "location": "Premier Inn Bellshill", "days_offline": 108}]}, "VendEase Premier Inn": {"total": 204, "offline": [{"serial": "IVM0006454", "partner": "VendEase Premier Inn", "location": "Premier Inn Letchworth Garden City", "days_offline": 5}, {"serial": "SVM0000164", "partner": "VendEase Premier Inn", "location": "Premier Inn Bognor Regis (Seafront) (1)", "days_offline": 108}, {"serial": "SVM0000167", "partner": "VendEase Premier Inn", "location": "Premier Inn Faversham", "days_offline": 21}, {"serial": "SVM0000197", "partner": "VendEase Premier Inn", "location": "hub London Spitalfields, Brick Lane", "days_offline": 1}, {"serial": "SVM0000198", "partner": "VendEase Premier Inn", "location": "Premier Inn Royal Tunbridge Wells (1)", "days_offline": 1}, {"serial": "SVM0000213", "partner": "VendEase Premier Inn", "location": "Premier Inn Maidstone (West Malling)", "days_offline": 3}, {"serial": "SVM0000215", "partner": "VendEase Premier Inn", "location": "Premier Inn Royal Tunbridge Wells (2)", "days_offline": 1}]}, "WLV": {"total": 181, "offline": [{"serial": "IVM0006147", "partner": "WLV", "location": "Premier Inn Warrington (M6/J21)", "days_offline": 1}, {"serial": "IVM0006210", "partner": "WLV", "location": "Premier Inn Manchester Central", "days_offline": 108}, {"serial": "IVM0006214", "partner": "WLV", "location": "Premier Inn Manchester Airport (M56/J6) Runger Lane North (1)", "days_offline": 1}, {"serial": "IVM0006229", "partner": "WLV", "location": "Premier Inn Manchester Airport (M56/J6) Runger Lane South (2)", "days_offline": 1}, {"serial": "SVM0000077", "partner": "WLV", "location": "Premier Inn Stratford-upon-Avon Central", "days_offline": 41}, {"serial": "SVM0000079", "partner": "WLV", "location": "Premier Inn Wigan Town Centre", "days_offline": 1}, {"serial": "SVM0000091", "partner": "WLV", "location": "Premier Inn Rugby North (M6 Jct1)", "days_offline": 14}, {"serial": "SVM0000331", "partner": "WLV", "location": "Premier Inn Manchester City Centre (Princess Street) (2)", "days_offline": 1}]}, "VendEase Travelodge": {"total": 31, "offline": []}, "JW Vending": {"total": 77, "offline": [{"serial": "IVM0007815", "partner": "JW Vending", "location": "Premier Inn Cardiff Stadium (1)", "days_offline": 84}, {"serial": "IVM0007849", "partner": "JW Vending", "location": "Premier Inn Cardiff Stadium (2)", "days_offline": 108}, {"serial": "IVM0007852", "partner": "JW Vending", "location": "Premier Inn Cardiff Zip (1)", "days_offline": 108}, {"serial": "IVM0007863", "partner": "JW Vending", "location": "Premier Inn Cardiff Zip (2)", "days_offline": 108}, {"serial": "IVM0007872", "partner": "JW Vending", "location": "Premier Inn Bridgewater Gateway", "days_offline": 80}, {"serial": "IVM0007878", "partner": "JW Vending", "location": "Premier Inn Exeter St Davids (1)", "days_offline": 1}, {"serial": "SVM0000806", "partner": "JW Vending", "location": "Premier Inn Exeter City Center (1)", "days_offline": 80}, {"serial": "SVM0000808", "partner": "JW Vending", "location": "Premier Inn Honiton", "days_offline": 56}, {"serial": "SVM0000812", "partner": "JW Vending", "location": "Premier WSM Lympsham", "days_offline": 108}, {"serial": "SVM0000815", "partner": "JW Vending", "location": "Premier Inn Portishead", "days_offline": 1}, {"serial": "SVM0000816", "partner": "JW Vending", "location": "Premier Inn Torquay Harbour (1)", "days_offline": 108}, {"serial": "SVM0000829", "partner": "JW Vending", "location": "Premier Inn Paignton Seafront", "days_offline": 91}, {"serial": "SVM0000837", "partner": "JW Vending", "location": "Premier Inn Cardiff City West", "days_offline": 31}, {"serial": "SVM0000845", "partner": "JW Vending", "location": "Premier Inn Torquay Harbour (2)", "days_offline": 108}, {"serial": "SVM0000847", "partner": "JW Vending", "location": "Premier Inn Exeter City Center (2)", "days_offline": 108}, {"serial": "SVM0000854", "partner": "JW Vending", "location": "Premier Inn Exmouth", "days_offline": 108}, {"serial": "SVM0000860", "partner": "JW Vending", "location": "Premier Inn Taunton East", "days_offline": 44}, {"serial": "SVM0000921", "partner": "JW Vending", "location": "Premier Inn Marlborough", "days_offline": 78}, {"serial": "SVM0000949", "partner": "JW Vending", "location": "Premier Inn Bude", "days_offline": 18}]}, "V4 Vending": {"total": 24, "offline": [{"serial": "SVM0000951", "partner": "V4 Vending", "location": "Premier Inn Llantrisant", "days_offline": 37}, {"serial": "SVM0000957", "partner": "V4 Vending", "location": "Premier Inn Bridgend (M4 / J35)", "days_offline": 37}]}, "Wilkes Vending": {"total": 69, "offline": [{"serial": "IVM0007819", "partner": "Wilkes Vending", "location": "Premier Inn Chesterfield North", "days_offline": 92}, {"serial": "SVM0000786", "partner": "Wilkes Vending", "location": "Premier Inn Thirsk", "days_offline": 85}, {"serial": "SVM0000792", "partner": "Wilkes Vending", "location": "Premier Inn Goole", "days_offline": 7}, {"serial": "SVM0000799", "partner": "Wilkes Vending", "location": "Premier Inn Halifax South (A629)", "days_offline": 2}, {"serial": "SVM0000899", "partner": "Wilkes Vending", "location": "Premier Inn Southport Ormskirk", "days_offline": 2}]}, "Bettavend": {"total": 20, "offline": [{"serial": "IVM0007961", "partner": "Bettavend", "location": "Premier Inn Poole North", "days_offline": 1}, {"serial": "SVM0000920", "partner": "Bettavend", "location": "Premier Inn Lymington (New Forest Hordle)", "days_offline": 51}, {"serial": "SVM0000932", "partner": "Bettavend", "location": "Premier Inn Salisbury South Milford", "days_offline": 52}]}, "Morvend": {"total": 50, "offline": [{"serial": "IVM0007810", "partner": "Morvend", "location": "Premier Inn Ipswich Quay Side", "days_offline": 37}, {"serial": "IVM0007932", "partner": "Morvend", "location": "Premier Inn Clacton On Sea (1)", "days_offline": 37}, {"serial": "SVM0000867", "partner": "Morvend", "location": "Premier Inn IPS South", "days_offline": 8}, {"serial": "SVM0000906", "partner": "Morvend", "location": "Premier Inn GT Yarmouth West", "days_offline": 25}]}, "Welcome Vending": {"total": 23, "offline": []}}, "unmatched_offline": 0}, "nv": {"date": "2026-11-26", "sources": ["Creditcall WebMIS", "Easitrax"], "window_start": "2026-11-24", "window_end": "2026-11-25", "payter_pulled": "26 Nov 2026 \u00b7 09:21 GMT", "partners": {"Abercromby Vending": {"total": 93, "monitored": 93, "no_vend": [{"serial": "IVM0006476", "payter": "P6X20233700658", "location": "Premier Inn Edinburgh Park (2)", "online": "No", "days": 12}, {"serial": "SVM0000249", "payter": "P6X20234400871", "location": "Premier Inn Dumfries (1)", "online": "No", "days": 8}, {"serial": "SVM0000278", "payter": "P6X20234101192", "location": "Premier Inn Dumfries (2)", "online": "Yes", "days": 2}, {"serial": "SVM0000300", "payter": "P6X20233401710", "location": "Premier Inn Stirling M9", "online": "Yes", "days": 12}, {"serial": "SVM0000311", "payter": "P6X20233402970", "location": "Premier Inn Ayr/Prestwick Airport", "online": "Yes", "days": 2}, {"serial": "SVM0000312", "payter": "P6X20233700488", "location": "Premier Inn Motherwell", "online": "Yes", "days": 5}, {"serial": "2203022", "payter": "P6X20233402395", "location": "Premier Inn Cumbernauld", "online": "", "days": 12}, {"serial": "2921011804", "payter": "P6X20233402560", "location": "Premier Inn Oban* (2)", "online": "", "days": 3}]}, "VendEase Premier Inn": {"total": 347, "monitored": 347, "no_vend": [{"serial": "SVM0000162", "payter": "P6X20234103048", "location": "Premier Inn London Greenwich (1)", "online": "Yes", "days": 3}, {"serial": "90339573", "payter": "Easitrax 30129514", "location": "Premier Inn South Mimms/Potters Bar", "online": "", "days": 2}, {"serial": "1000000071", "payter": "Easitrax 30092416", "location": "Premier Inn Gatwick Airport South (London Road)", "online": "", "days": 3}, {"serial": "90168588", "payter": "Easitrax 30103404", "location": "Premier Inn Braintree (A120)", "online": "", "days": 12}, {"serial": "90388561", "payter": "P6X20233401811", "location": "Premier Inn London Woolwich (Royal Arsenal)", "online": "", "days": 3}, {"serial": "90458223", "payter": "P6X20235000827", "location": "Premier Inn Bognor Regis", "online": "", "days": 3}]}, "WLV": {"total": 184, "monitored": 183, "no_vend": [{"serial": "90166345", "payter": "Easitrax 30135370", "location": "Premier Inn Wirral (Heswall)", "online": "", "days": 12}, {"serial": "SVM0000329", "payter": "P6X20233401197", "location": "Premier Inn Manchester City Centre (Princess Street) (1)", "online": "Yes", "days": 5}]}, "VendEase Travelodge": {"total": 31, "monitored": 31, "no_vend": [{"serial": "SVM0000768", "payter": "P6X20235001986", "location": "Travelodge London Hounslow", "online": "Yes", "days": 2}]}, "JW Vending": {"total": 79, "monitored": 79, "no_vend": [{"serial": "SVM0000826", "payter": "P6X20234101289", "location": "Premier WSM East (2)", "online": "Yes", "days": 12}, {"serial": "IVM0007828", "payter": "P6X20235001307", "location": "Premier Inn Bristol Cabot Circus", "online": "No", "days": 2}]}, "V4 Vending": {"total": 24, "monitored": 24, "no_vend": []}, "Wilkes Vending": {"total": 69, "monitored": 69, "no_vend": [{"serial": "SVM0000792", "payter": "P6X20234101889", "location": "Premier Inn Goole", "online": "No", "days": 5}, {"serial": "SVM0000870", "payter": "P6X20234101368", "location": "Premier Inn Sheffield City Centre (St Mary's Gate)", "online": "Yes", "days": 5}]}, "Bettavend": {"total": 20, "monitored": 20, "no_vend": [{"serial": "SVM0000920", "payter": "P6X20234103569", "location": "Premier Inn Lymington (New Forest Hordle)", "online": "No", "days": 2}]}, "Morvend": {"total": 50, "monitored": 50, "no_vend": [{"serial": "SVM0000886", "payter": "P6X20234102509", "location": "Premier Inn Corby", "online": "Yes", "days": 12}]}, "Welcome Vending": {"total": 23, "monitored": 23, "no_vend": []}}, "unlinked": {"WLV": 1}, "extra_from_all_partners": 143}, "hist": [{"t": "2026-11-23 12:11 GMT", "b": 8, "o": 58}, {"t": "2026-11-23 13:10 GMT", "b": 6, "o": 58}, {"t": "2026-11-23 15:11 GMT", "b": 4, "o": 60}, {"t": "2026-11-24 08:25 GMT", "b": 11, "o": 53}, {"t": "2026-11-24 09:11 GMT", "b": 10, "o": 53}, {"t": "2026-11-24 12:11 GMT", "b": 8, "o": 57}, {"t": "2026-11-24 15:27 GMT", "b": 3, "o": 64}, {"t": "2026-11-25 08:52 GMT", "b": 3, "o": 64}, {"t": "2026-11-25 09:07 GMT", "b": 4, "o": 53}, {"t": "2026-11-25 12:11 GMT", "b": 2, "o": 57}, {"t": "2026-11-25 15:11 GMT", "b": 3, "o": 66}, {"t": "2026-11-25 23:18 GMT", "b": 4, "o": 66}, {"t": "2026-11-26 01:20 GMT", "b": 5, "o": 61}, {"t": "2026-11-26 03:23 GMT", "b": 5, "o": 48}, {"t": "2026-11-26 09:11 GMT", "b": 3, "o": 53}, {"t": "2026-11-26 12:11 GMT", "b": 1, "o": 58}], "nvh": [{"d": "2026-11-16", "n": 25, "m": 881}, {"d": "2026-11-17", "n": 24, "m": 881}, {"d": "2026-11-18", "n": 20, "m": 881}, {"d": "2026-11-19", "n": 22, "m": 884}, {"d": "2026-11-20", "n": 22, "m": 882}, {"d": "2026-11-23", "n": 22, "m": 881}, {"d": "2026-11-25", "n": 19, "m": 880}, {"d": "2026-11-26", "n": 23, "m": 919}], "unmatched": []};
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ORDER=['Abercromby Vending','VendEase Premier Inn','WLV','VendEase Travelodge','JW Vending','V4 Vending','Wilkes Vending','Bettavend','Morvend','Welcome Vending'];
+const COL=['#6d6af8','#38bdf8','#34d399','#a78bfa','#22d3ee','#f472b6','#fbbf24','#60a5fa','#2dd4bf','#c084fc'];
+const pc=p=>COL[Math.max(0,ORDER.indexOf(p))];
+const S=DATA.sla, O=DATA.off, N=DATA.nv;
+const fmtD=s=>{const d=new Date(s);return isNaN(d)?s:d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})};
+
+// ---------- derive per-partner model ----------
+const P={};
+ORDER.forEach(p=>P[p]={name:p,machines:0,breaches:0,offline:0,nvMon:0,nv:0});
+S.partnerRates.forEach(r=>{if(P[r.partner]){P[r.partner].machines=r.machines;P[r.partner].breaches=r.breaches}});
+const offRows=[];Object.entries(O.partners).forEach(([p,v])=>{(v.offline||[]).forEach(m=>offRows.push({...m,partner:p}));if(P[p])P[p].offline=(v.offline||[]).length});
+const nvRows=[];Object.entries(N.partners).forEach(([p,v])=>{if(P[p]){P[p].nvMon=v.monitored;P[p].nv=v.no_vend.length}v.no_vend.forEach(m=>nvRows.push({...m,partner:p}))});
+const slaRows=S.breaches.map(b=>({...b}));
+const fleet=S.totals.machines, nOff=offRows.length, nvMon=Object.values(N.partners).reduce((a,p)=>a+p.monitored,0);
+const unl=N.unlinked||{};
+let state={view:'overview',partner:null,q:'',sort:{score:['issues',-1],sla:['days',-1],off:['days_offline',-1],nv:['days',-1]}};
+
+// ---------- sparkline ----------
+function spark(vals,color,id){
+  const w=300,h=78,mx=Math.max(...vals),mn=Math.max(0,Math.min(...vals)-(Math.max(...vals)-Math.min(...vals))*.6),rng=(mx-mn)||1;
+  const pts=vals.map((v,i)=>[i*(w/(vals.length-1||1)),h-8-((v-mn)/rng)*(h-26)]);
+  let d=`M${pts[0][0]},${pts[0][1]}`;for(let i=1;i<pts.length;i++){const [x0,y0]=pts[i-1],[x1,y1]=pts[i],cx=(x0+x1)/2;d+=` C${cx},${y0} ${cx},${y1} ${x1},${y1}`}
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><defs><linearGradient id="g${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity=".45"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+  <path d="${d} L${w},${h} L0,${h}Z" fill="url(#g${id})"/><path d="${d}" fill="none" stroke="${color}" stroke-width="2"/>
+  ${pts.map((p,i)=>i===pts.length-1?`<circle cx="${p[0]-3}" cy="${p[1]}" r="3.5" fill="${color}"/>`:'').join('')}</svg>`;
+}
+function dots(total,hl,color){ // dot-matrix for fleet card
+  let s='<svg class="spark" viewBox="0 0 300 78" preserveAspectRatio="none">';const cols=30,rows=4;const lit=Math.round(cols*rows*hl);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const i=r*cols+c;s+=`<circle cx="${6+c*9.9}" cy="${14+r*16}" r="2.2" fill="${i<lit?color:'rgba(200,210,255,.28)'}"/>`}
+  return s+'</svg>';
+}
+function delta(cur,prev,lowerGood=true){
+  if(prev==null)return '<span class="flat">—</span>';const d=cur-prev;if(!d)return '<span class="flat">● no change</span>';
+  const good=lowerGood?d<0:d>0;return `<span class="${good?'down':'up'}">${d>0?'▲':'▼'} ${Math.abs(d)}</span>`;
+}
+function kpi(t,v,sub,d,art){return `<div class="card glass kpi"><h3>${t}</h3><div class="v">${v}</div><div class="d">${d} ${sub}</div>${art}</div>`}
+
+// ---------- overview ----------
+function renderKPIs(){
+  const H=DATA.hist, NH=DATA.nvh, prevH=H[H.length-2], prevN=NH[NH.length-2];
+  const healthy=fleet-new Set([...offRows.map(r=>r.serial),...slaRows.map(r=>r.serial)]).size;
+  $('#kpis').innerHTML=
+    kpi('Fleet monitored',fleet.toLocaleString(),`· ${ORDER.length} partners`,`<span class="down">${(healthy/fleet*100).toFixed(1)}% healthy</span>`,dots(fleet,healthy/fleet,'#8b7bff'))+
+    kpi('SLA breaches',`${S.totals.breaches}<small>${S.totals.rate}%</small>`,'vs previous run',delta(S.totals.breaches,prevH&&prevH.b),spark(H.map(x=>x.b),'#fb7185','a'))+
+    kpi('Offline',`${nOff}<small>${(nOff/fleet*100).toFixed(1)}%</small>`,'vs previous run',delta(S.totals.offline.count,prevH&&prevH.o),spark(H.map(x=>x.o),'#38bdf8','b'))+
+    kpi('Without vends · 48h',`${nvRows.length}<small>of ${nvMon}</small>`,'vs previous check',delta(nvRows.length,prevN&&prevN.n),spark(NH.map(x=>x.n),'#34d399','c'));
+}
+function renderDonut(){
+  const tot=ORDER.reduce((a,p)=>a+P[p].machines,0);let a0=-Math.PI/2,s='';const R=88,r=60,cx=105,cy=105;
+  ORDER.forEach(p=>{const f=P[p].machines/tot;if(!f)return;const a1=a0+f*Math.PI*2-0.02;
+    const L=(a1-a0)>Math.PI?1:0,pt=(rad,a)=>[cx+rad*Math.cos(a),cy+rad*Math.sin(a)];
+    const [x0,y0]=pt(R,a0),[x1,y1]=pt(R,a1),[x2,y2]=pt(r,a1),[x3,y3]=pt(r,a0);
+    s+=`<path d="M${x0},${y0}A${R},${R} 0 ${L} 1 ${x1},${y1}L${x2},${y2}A${r},${r} 0 ${L} 0 ${x3},${y3}Z" fill="${pc(p)}" opacity="${state.partner&&state.partner!==p?.25:1}" style="cursor:pointer" data-p="${esc(p)}"><title>${esc(p)}: ${P[p].machines}</title></path>`;a0=a1+0.02});
+  s+=`<text x="105" y="102" text-anchor="middle" fill="#eef2ff" font-size="30" font-weight="650">${tot}</text><text x="105" y="124" text-anchor="middle" fill="#a9b4d6" font-size="12">machines</text>`;
+  $('#donut').innerHTML=s;$('#fleetsub').textContent='SLA fleet · Invenda';
+  $('#legend').innerHTML=ORDER.map(p=>`<div data-p="${esc(p)}" style="cursor:pointer;opacity:${state.partner&&state.partner!==p?.4:1}"><i class="dot" style="background:${pc(p)};width:10px;height:10px;border-radius:50%"></i><span class="n">${esc(p)}</span><span class="x"><b>${P[p].machines}</b></span><span class="x">${(P[p].machines/tot*100).toFixed(1)}%</span></div>`).join('');
+}
+function pctCell(n,d,color){const p=d?n/d*100:0;return `<div class="cellbar"><div class="bar"><i style="width:${Math.min(100,p*4)}%;background:${color}"></i></div><span>${n?`${n} · ${p.toFixed(1)}%`:'—'}</span></div>`}
+function renderScore(){
+  const [k,dir]=state.sort.score;const iss=p=>new Set([...slaRows,...offRows,...nvRows].filter(r=>r.partner===p).map(r=>r.serial)).size;
+  const rows=ORDER.map(p=>{const n=iss(p);return {...P[p],issN:n,issR:P[p].machines?n/P[p].machines:0,offR:P[p].machines?P[p].offline/P[p].machines:0,nvR:P[p].nvMon?P[p].nv/P[p].nvMon:0}});
+  const key={name:'name',machines:'machines',issues:'issR',breaches:'breaches',offline:'offR',nv:'nvR'}[k];
+  rows.sort((a,b)=>((a[key]>b[key]?1:a[key]<b[key]?-1:0)||(a.issN-b.issN)||(a.breaches-b.breaches))*dir);
+  const h=(id,l,c='')=>`<th class="${c}" data-sort="score:${id}">${l}${k===id?(dir>0?' ↑':' ↓'):''}</th>`;
+  $('#score').innerHTML=`<thead><tr>${h('name','Partner')}${h('issues','Issues','r')}${h('machines','Machines','r')}${h('breaches','SLA','r')}${h('offline','Offline')}${h('nv','No vends 48h')}</tr></thead><tbody>`+
+   rows.map(r=>`<tr data-p="${esc(r.name)}" style="cursor:pointer;opacity:${state.partner&&state.partner!==r.name?.4:1}"><td><span class="pname"><i class="dot" style="background:${pc(r.name)}"></i>${esc(r.name)}</span></td><td class="r"><span class="iss ${r.issR>=.15?'d3':r.issR>=.05?'d2':'d1'}">${(r.issR*100).toFixed(1)}%</span><span class="issn">${r.issN} machine${r.issN===1?'':'s'}</span></td><td class="r">${r.machines}</td>
+   <td class="r">${r.breaches?`<span class="tag t-off">${r.breaches}</span>`:'<span class="tag t-on">0</span>'}</td><td>${pctCell(r.offline,r.machines,'#38bdf8')}</td>
+   <td>${r.nvMon?pctCell(r.nv,r.nvMon,'#34d399'):`<span class="note">${unl[r.name]?'no ID on file':'—'}</span>`}</td></tr>`).join('')+'</tbody>';
+}
+const daysCls=d=>d>=14?'d3':d>=3?'d2':'d1';
+function match(r){const q=state.q;return (!state.partner||r.partner===state.partner)&&(!q||[r.location,r.serial,r.payter,r.partner].join(' ').toLowerCase().includes(q))}
+function listRows(rows,fmt,el,n=6){
+  const f=rows.filter(match);el.innerHTML=f.length?f.slice(0,n).map(fmt).join('')+(f.length>n?`<button class="more" data-go="${el.dataset.go}">View all ${f.length} →</button>`:''):'<div class="empty">Nothing here 🎉</div>';
+}
+function renderLists(){
+  $('#l-sla').dataset.go='sla';$('#l-off').dataset.go='off';$('#l-nv').dataset.go='nv';
+  listRows([...slaRows].sort((a,b)=>b.days-a.days),r=>`<div class="row"><div class="l"><b>${esc(r.location)}</b><span>${esc(r.partner)} · ${esc(r.serial)} · water ${r.water_pct??'–'}% · snacks ${r.snack_pct??'–'}%</span></div><div class="rr"><b class="${daysCls(r.days)}">${r.days}d</b>${r.online==='Yes'?'online':'offline'}</div></div>`,$('#l-sla'));
+  listRows([...offRows].sort((a,b)=>b.days_offline-a.days_offline),r=>`<div class="row"><div class="l"><b>${esc(r.location)}</b><span>${esc(r.partner)} · ${esc(r.serial)}</span></div><div class="rr"><b class="${daysCls(r.days_offline)}">${r.days_offline}d</b>offline</div></div>`,$('#l-off'));
+  listRows([...nvRows].sort((a,b)=>b.days-a.days),r=>`<div class="row"><div class="l"><b>${esc(r.location)}</b><span>${esc(r.partner)} · ${esc(r.payter)}</span></div><div class="rr"><b class="${daysCls(r.days)}">${r.days}d</b>${r.online==='Yes'?'online':r.online==='No'?'offline':'no telemetry'}</div></div>`,$('#l-nv'));
+  $('#offpill').textContent=`${nOff} machines`;$('#nvpill').textContent=`${fmtD(N.window_start)} – ${fmtD(N.window_end)}`;
+}
+// ---------- detail views ----------
+const onl=v=>v==='Yes'?'<span class="tag t-on">Online</span>':v==='No'?'<span class="tag t-off">Offline</span>':'<span class="tag t-na">n/a</span>';
+const pbar=(v,c)=>v==null?'<span class="note">–</span>':`<span class="pct" style="--w:${Math.min(100,v)}%;--c:${v<15?'#fb7185':c}"><i></i>${v}%</span>`;
+const VIEWS={
+  sla:{rows:()=>slaRows,cols:[['location','Location'],['partner','Partner'],['serial','Serial',null,'hide-s'],['water_pct','Water',r=>pbar(r.water_pct,'#38bdf8'),'r'],['snack_pct','Snacks',r=>pbar(r.snack_pct,'#8b7bff'),'r'],['online','Status',r=>onl(r.online)],['days','Days',r=>`<b class="days ${daysCls(r.days)}">${r.days}</b>`,'r']]},
+  off:{rows:()=>offRows,cols:[['location','Location'],['partner','Partner'],['serial','Serial',null,'hide-s'],['days_offline','Days offline',r=>`<b class="days ${daysCls(r.days_offline)}">${r.days_offline}</b>`,'r']]},
+  nv:{rows:()=>nvRows,cols:[['location','Location'],['partner','Partner'],['serial','Serial',null,'hide-s'],['payter','Payter / TID',null,'hide-s'],['online','Telemetry',r=>onl(r.online)],['days','Days',r=>`<b class="days ${daysCls(r.days)}">${r.days}</b>`,'r']]}
+};
+function renderTable(v){
+  const V=VIEWS[v],[k,dir]=state.sort[v];
+  const cmp=(a,b)=>((a[k]??-1)>(b[k]??-1)?1:(a[k]??-1)<(b[k]??-1)?-1:0)*dir;
+  const small=window.matchMedia('(max-width:820px)').matches;
+  const cols=V.cols.filter(c=>c[0]!=='partner'&&!(small&&c[3]&&c[3].includes('hide-s')));
+  const denom=p=>v==='nv'?P[p].nvMon:P[p].machines;
+  const color={sla:'#fb7185',off:'#38bdf8',nv:'#34d399'}[v];
+  const WID=(small?{sla:{water_pct:'22%',snack_pct:'22%',online:'72px',days:'64px'},off:{days_offline:'96px'},nv:{online:'84px',days:'64px'}}:{sla:{serial:'150px',water_pct:'140px',snack_pct:'140px',online:'110px',days:'80px'},off:{serial:'150px',days_offline:'130px'},nv:{serial:'150px',payter:'200px',online:'120px',days:'80px'}})[v];
+  const cg=`<colgroup>${cols.map(c=>`<col class="${c[3]&&c[3].includes('hide-s')?'hide-s':''}" style="width:${WID[c[0]]||'auto'}">`).join('')}</colgroup>`;
+  const head=cg+`<thead><tr>${cols.map(c=>`<th class="${c[3]||''}" data-sort="${v}:${c[0]}">${c[1]}${k===c[0]?(dir>0?' ↑':' ↓'):''}</th>`).join('')}</tr></thead>`;
+  const parts=ORDER.filter(p=>!state.partner||p===state.partner);
+  const withRows=[],clear=[];
+  parts.forEach(p=>{const rows=V.rows().filter(r=>r.partner===p&&match(r)).sort(cmp);(rows.length?withRows:clear).push([p,rows])});
+  withRows.sort((a,b)=>b[1].length-a[1].length);
+  const pct=(n,p)=>denom(p)?n/denom(p)*100:0;
+  let html=withRows.map(([p,rows])=>`<div class="card glass pcard"><div class="ph"><i class="dot" style="background:${pc(p)}"></i><b>${esc(p)}</b>
+    <span class="ct"><strong>${rows.length}</strong>of ${denom(p)} · ${pct(rows.length,p).toFixed(1)}%</span></div>
+    <div class="pbar"><i style="width:${Math.min(100,pct(rows.length,p)*4)}%;background:${color}"></i></div>
+    <div class="tablewrap"><table>${head}<tbody>${rows.map(r=>`<tr>${cols.map(c=>`<td class="${c[3]||''} ${c[0]==='location'?'loc':'id'}" ${c[0]==='location'?`title="${esc(r.location)}"`:''}>${c[2]?c[2](r):c[0]==='location'?`${esc(r.location)}${small?`<span class="subid">${esc(r.serial)}${r.payter?' · '+esc(r.payter):''}</span>`:''}`:esc(r[c[0]])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`).join('');
+  if(clear.length) html+=`<div style="grid-column:1/-1"><div class="note" style="margin:4px 2px 10px">${state.q?'No matches':'All clear'} · ${clear.length} partner${clear.length>1?'s':''}</div><div class="clearrow">${clear.map(([p])=>`<div class="card glass pcard clear"><div class="ph"><i class="dot" style="background:${pc(p)}"></i><b style="font-size:14px">${esc(p)}</b><span class="ct">${v==='nv'&&!P[p].nvMon?(unl[p]?'no ID on file':'—'):`<span class="tag t-on">0 of ${denom(p)}</span>`}</span></div></div>`).join('')}</div></div>`;
+  if(v==='off'&&!state.partner&&DATA.unmatched&&DATA.unmatched.length){
+    const U=DATA.unmatched.filter(u=>!state.q||(u.serial+' '+u.site).toLowerCase().includes(state.q));
+    const CATS=[['Live hotel – missing from partner file','Live at a hotel but not in any partner file — check whether these should be added','#fb7185'],
+      ['Removed / closed','Machines you have removed or whose hotel closed — still registered in Invenda','#fbbf24'],
+      ['Non-hotel site','Universities, libraries and Whitbread head office — outside the partner SLA','#38bdf8'],
+      ['Not installed','In prep, in delivery or deactivated in Invenda — not yet at a site','#a9b4d6']];
+    html+=`<div class="card glass pcard" id="unm" style="grid-column:1/-1"><div class="ph"><i class="dot" style="background:#a9b4d6"></i><b>Offline, not in a partner file</b><span class="ct"><strong>${U.length}</strong>machines</span></div>
+      <div class="unote">These show as offline in the Invenda terminals export but aren't in any of the 10 partner location files, so they aren't counted in the partner totals or the ${nOff} above.</div>
+      ${CATS.map(([c,desc,col])=>{const L=U.filter(u=>u.cat===c);return L.length?`<div class="ucat"><h4><i class="dot" style="background:${col};width:8px;height:8px;border-radius:50%;display:inline-block;margin-top:3px"></i>${c} <span>· ${L.length}</span></h4><div class="note">${desc}</div>
+      <div class="tablewrap"><table><tbody>${L.map(u=>`<tr><td>${esc(u.site)}</td><td class="r">${esc(u.serial)}</td></tr>`).join('')}</tbody></table></div></div>`:''}).join('')}</div>`;
+  }
+  $('#t-'+v).innerHTML=html;
+  document.querySelectorAll(`.chips[data-for="${v}"]`).forEach(el=>{const ps=[...new Set(V.rows().map(r=>r.partner))];
+    el.innerHTML=`<span class="chip ${!state.partner?'on':''}" data-p="">All · ${V.rows().length}</span>`+ORDER.filter(p=>ps.includes(p)).map(p=>`<span class="chip ${state.partner===p?'on':''}" data-p="${esc(p)}">${esc(p)} · ${V.rows().filter(r=>r.partner===p).length}</span>`).join('')});
+}
+function miniKPIs(){
+  const box=(t,v,s)=>`<div class="card glass"><h3 style="font-size:13px;color:var(--ink2);font-weight:500">${t}</h3><div style="font-size:28px;font-weight:650;margin-top:8px">${v}</div><div class="note">${s}</div></div>`;
+  $('#kpis-sla').innerHTML=box('Machines in breach',S.totals.breaches,`${S.totals.rate}% of ${fleet}`)+box('Water below 15%',S.totals.bySection['Water Selections']||0,'Radnor / Strathmore')+box('Snacks below 15%',S.totals.bySection['Snacks']||0,'chocolate &amp; snacks')+box('Both categories',S.totals.all2,'empty on both');
+  const lo=offRows.filter(r=>r.days_offline>=14).length,nw=offRows.filter(r=>r.days_offline<=1).length;
+  $('#kpis-off').innerHTML=box('Offline now',nOff,`${(nOff/fleet*100).toFixed(1)}% of fleet`)+box('New today',nw,'offline ≤ 1 day')+box('Long-term',lo,'offline 14+ days')+`<div data-go2="unm" style="cursor:pointer">`+box('Not in partner files',O.unmatched_offline||0,(O.unmatched_offline?'offline in Invenda · see breakdown ↓':'all accounted for'))+'</div>';
+  const off2=nvRows.filter(r=>r.online==='No').length,nw2=nvRows.filter(r=>r.days<=2).length;
+  $('#kpis-nv').innerHTML=box('Without vends',nvRows.length,`${(nvRows.length/nvMon*100).toFixed(1)}% of ${nvMon} monitored`)+box('New this check',nw2,'first flagged today')+box('Also offline',off2,'likely connectivity')+box('Partners affected',new Set(nvRows.map(r=>r.partner)).size,`of ${ORDER.length}`);
+  $('#nvdesc').innerHTML=`No approved sale ${fmtD(N.window_start)} – ${fmtD(N.window_end)}, checked against ${N.sources.join(' + ')}, matched by Payter serial or terminal ID. Where a machine is also offline, missing sales are likely connectivity rather than demand.`;
+}
+// ---------- chrome ----------
+const ICON={overview:'<path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/>',sla:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',off:'<path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0M12 19h.01M3 3l18 18"/>',nv:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'};
+function renderNav(){
+  const items=[['overview','Overview',''],['sla','SLA breaches',slaRows.length],['off','Offline machines',nOff],['nv','Without vends',nvRows.length]];
+  $('#nav').innerHTML=items.map(([k,l,c])=>`<a data-view="${k}" title="${l}" class="${state.view===k?'on':''}"><svg viewBox="0 0 24 24">${ICON[k]}</svg><span class="lbl">${l}</span>${c!==''?`<span class="cnt">${c}</span>`:''}</a>`).join('');
+  $('#plist').innerHTML=`<a data-p="" class="${!state.partner?'on':''}"><span class="dot" style="background:linear-gradient(135deg,#38bdf8,#8b7bff)"></span><span class="lbl">All partners</span></a>`+ORDER.map(p=>`<a data-p="${esc(p)}" title="${esc(p)}" class="${state.partner===p?'on':''}"><span class="dot" style="background:${pc(p)}"></span><span class="lbl">${esc(p)}</span><span class="cnt">${P[p].machines}</span></a>`).join('');
+  $('#foot').innerHTML=`<b>SLA &amp; offline</b><br>run ${esc(S.run_timestamp)}<br>inventory ${esc(S.inventory_pulled)}<br><b>No vends</b><br>${esc(N.sources.join(' + '))}<br>pulled ${esc(N.payter_pulled)}`;
+  $('#stamp').innerHTML=`<b>${new Date(S.date).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).replace(',','')}</b><br>Updated ${esc(S.run_timestamp)}`;
+}
+function render(){
+  renderNav();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+state.view));
+  if(state.view==='overview'){renderKPIs();renderDonut();renderScore();renderLists()}else{miniKPIs();renderTable(state.view)}
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('[data-go2]')){const u=document.getElementById('unm');if(u)u.scrollIntoView({behavior:'smooth'});return}
+  const t=e.target.closest('[data-view],[data-p],[data-sort],[data-go]');if(!t)return;
+  if(t.dataset.view){state.view=t.dataset.view;window.scrollTo({top:0})}
+  else if(t.dataset.go){state.view=t.dataset.go;window.scrollTo({top:0})}
+  else if(t.dataset.sort){const [v,k]=t.dataset.sort.split(':');const cur=state.sort[v];state.sort[v]=[k,cur[0]===k?-cur[1]:(k==='name'||k==='location'||k==='partner'||k==='serial'?1:-1)]}
+  else if('p' in t.dataset){state.partner=t.dataset.p&&state.partner!==t.dataset.p?t.dataset.p:null}
+  render();
+});
+try{if(localStorage.getItem('opsMini')==='1')document.body.classList.add('mini')}catch(e){}
+$('#collapse').addEventListener('click',e=>{e.stopPropagation();const m=document.body.classList.toggle('mini');$('#collapse').title=m?'Expand menu':'Collapse menu';try{localStorage.setItem('opsMini',m?'1':'0')}catch(e){}});
+$('#q').addEventListener('input',e=>{state.q=e.target.value.trim().toLowerCase();render()});
+document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==$('#q')){e.preventDefault();$('#q').focus()}});
+let _rw=innerWidth<=820;window.addEventListener('resize',()=>{const s=innerWidth<=820;if(s!==_rw){_rw=s;render()}});
+render();
+</script>
+</body>
+</html>
